@@ -11,110 +11,119 @@
 --up:#4cd187;--down:#f0817a;
 --good-bg:#10331f;--good-fg:#4cd187;--warn-bg:#3a2e0e;--warn-fg:#f0c64c;--bad-bg:#3a1714;--bad-fg:#f0817a;--neu-bg:#222226;--neu-fg:#bcbcbc;}}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;padding:16px;}
-.wrap{max-width:440px;margin:0 auto;}
-.head{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:16px;font-weight:600;}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;}
-.lbl{font-size:12px;color:var(--t3);margin:0 0 10px;}
-.trow{display:flex;align-items:baseline;gap:8px;margin-bottom:6px;}.trow:last-child{margin-bottom:0;}
-.tzn{font-size:13px;color:var(--t2);min-width:34px;}
-.tval{font-size:27px;font-weight:600;letter-spacing:.5px;}.tsuf{font-size:13px;color:var(--t3);}
-.us .tval,.us .tsuf{color:var(--blue);}
-.badge{border-radius:14px;padding:16px;margin-bottom:14px;}
-.badge .btop{display:flex;align-items:center;gap:8px;margin:0 0 6px;}
-.ttag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:7px;background:rgba(0,0,0,.10);}
-.badge .bname{font-size:19px;font-weight:600;}
-.badge .bdetail{font-size:13px;line-height:1.6;margin:0;opacity:.92;}
+body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;padding:11px;}
+.wrap{max-width:860px;margin:0 auto;}
+.head{display:flex;align-items:center;gap:8px;margin-bottom:9px;font-size:15px;font-weight:600;}
+.timecard{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:8px 12px;margin-bottom:9px;font-size:13px;}
+.timecard .tk{font-size:11px;color:var(--t3);}
+.timecard .tj{font-weight:600;}
+.timecard .te{font-weight:600;color:var(--blue);margin-left:auto;}
+
+/* ===== 2カラムレイアウト ===== */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
+@media(max-width:560px){.cols{grid-template-columns:1fr;}}  /* 狭い縦持ちスマホは上下に折り返し */
+.colttl{font-size:12px;color:var(--t2);font-weight:700;margin:0 2px 7px;padding-bottom:5px;border-bottom:2px solid var(--line);}
+
+.badge{border-radius:12px;padding:12px 14px;margin-bottom:9px;}
+.badge .btop{display:flex;align-items:center;gap:7px;margin:0 0 4px;flex-wrap:wrap;}
+.ttag{font-size:10px;font-weight:700;padding:1px 7px;border-radius:6px;background:rgba(0,0,0,.10);}
+.badge .bname{font-size:15px;font-weight:600;line-height:1.25;}
+.badge .bdetail{font-size:12px;line-height:1.5;margin:0;opacity:.92;}
 .badge.warn{background:var(--warn-bg);}.badge.warn .bname,.badge.warn .bdetail,.badge.warn .ttag{color:var(--warn-fg);}
 .badge.bad{background:var(--bad-bg);}.badge.bad .bname,.badge.bad .bdetail,.badge.bad .ttag{color:var(--bad-fg);}
 .badge.good{background:var(--good-bg);}.badge.good .bname,.badge.good .bdetail,.badge.good .ttag{color:var(--good-fg);}
 .badge.neutral{background:var(--neu-bg);}.badge.neutral .bname,.badge.neutral .bdetail,.badge.neutral .ttag{color:var(--neu-fg);}
-.divwarn{background:var(--bad-bg);color:var(--bad-fg);border-radius:12px;padding:11px 14px;font-size:12px;font-weight:600;line-height:1.5;margin-bottom:14px;}
-.sec{font-size:12px;color:var(--t2);font-weight:600;margin:2px 2px 8px;}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
-.cell{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;}
-.cell .cl{font-size:13px;color:var(--t2);margin:0 0 4px;}
-.cell .cv{font-size:24px;font-weight:600;margin:0 0 6px;}
+.divwarn{background:var(--bad-bg);color:var(--bad-fg);border-radius:10px;padding:9px 12px;font-size:11px;font-weight:600;line-height:1.45;margin-bottom:9px;}
+.sec{font-size:11px;color:var(--t2);font-weight:600;margin:2px 2px 6px;}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:9px;}
+.cell{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 6px;text-align:center;}
+.cell .cl{font-size:10px;color:var(--t2);margin:0 0 2px;white-space:nowrap;}
+.cell .cv{font-size:16px;font-weight:600;margin:0 0 4px;}
 .cv.up{color:var(--up);}.cv.down{color:var(--down);}.cv.flat{color:var(--t1);}
-.chip{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:8px;margin-bottom:4px;}
+.chip{display:inline-block;font-size:10px;font-weight:600;padding:1px 5px;border-radius:6px;}
 .chip.good{background:var(--good-bg);color:var(--good-fg);}
 .chip.warn{background:var(--warn-bg);color:var(--warn-fg);}
 .chip.bad{background:var(--bad-bg);color:var(--bad-fg);}
-.basis{font-size:10px;color:var(--t3);margin:0;line-height:1.4;}
-.regime{display:flex;align-items:center;gap:8px;border-radius:12px;padding:12px 14px;font-size:13px;font-weight:600;margin-bottom:14px;}
+.regime{border-radius:10px;padding:9px 13px;font-size:12px;font-weight:600;margin-bottom:9px;}
 .regime.good{background:var(--good-bg);color:var(--good-fg);}
 .regime.warn{background:var(--warn-bg);color:var(--warn-fg);}
 .regime.bad{background:var(--bad-bg);color:var(--bad-fg);}
-.vbadge{border-radius:12px;padding:13px 15px;margin-bottom:10px;}
-.vbadge .vbname{font-size:16px;font-weight:700;margin:0 0 4px;}
-.vbadge .vbdetail{font-size:12px;line-height:1.55;margin:0;opacity:.92;}
+
+.vbadge{display:flex;flex-direction:column;gap:3px;border-radius:10px;padding:10px 13px;margin-bottom:8px;}
+.vbadge .vbname{font-size:13px;font-weight:700;}
+.vbadge .vbdetail{font-size:11px;line-height:1.45;opacity:.92;}
 .vbadge.good{background:var(--good-bg);}.vbadge.good .vbname,.vbadge.good .vbdetail{color:var(--good-fg);}
 .vbadge.warn{background:var(--warn-bg);}.vbadge.warn .vbname,.vbadge.warn .vbdetail{color:var(--warn-fg);}
 .vbadge.bad{background:var(--bad-bg);}.vbadge.bad .vbname,.vbadge.bad .vbdetail{color:var(--bad-fg);}
 .vbadge.neutral{background:var(--neu-bg);}.vbadge.neutral .vbname,.vbadge.neutral .vbdetail{color:var(--neu-fg);}
-.vtable{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 12px;margin-bottom:14px;}
-.vrow{display:flex;align-items:center;font-size:12px;padding:7px 0;border-bottom:1px solid var(--line);}
+.vtable{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:3px 11px;}
+.vrow{display:flex;align-items:center;font-size:12px;padding:5px 0;border-bottom:1px solid var(--line);}
 .vrow:last-child{border-bottom:none;}
 .vrow.vhead{color:var(--t3);font-size:10px;font-weight:600;}
-.vrow.tgt{background:rgba(24,95,165,.06);border-radius:6px;}
-.vrank{width:22px;color:var(--t3);}
-.vtkr{flex:1.3;font-weight:600;}
-.vsec{flex:1.4;color:var(--t2);font-size:11px;}
-.vrvol{flex:.9;text-align:right;font-weight:600;}
-.vchg{flex:.9;text-align:right;}
+.vrow.tgt{background:rgba(24,95,165,.06);border-radius:5px;}
+.vrank{width:20px;color:var(--t3);}
+.vtkr{flex:1.5;font-weight:600;}
+.vrvol{flex:1;text-align:right;font-weight:600;}
+.vchg{flex:1;text-align:right;}
 .vchg.up{color:var(--up);}.vchg.down{color:var(--down);}.vchg.flat{color:var(--t1);}
-.insight{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;}
-.insight .it{font-size:12px;color:var(--t3);margin:0 0 8px;display:flex;align-items:center;gap:6px;}
-.insight .ib{font-size:13px;line-height:1.7;margin:0;color:var(--t1);}
-.foot{text-align:center;font-size:11px;color:var(--t3);margin-top:14px;}
+
+.insight{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-top:12px;}
+.insight .it{font-size:11px;color:var(--t3);margin:0 0 5px;}
+.insight .ib{font-size:12px;line-height:1.6;margin:0;color:var(--t1);}
+.foot{text-align:center;font-size:10px;color:var(--t3);margin-top:8px;}
 </style></head>
 <body><div class="wrap">
 <div class="head">📊 神話ver2 地合い判定</div>
 
-<div class="card">
-<p class="lbl">取得時刻</p>
-<div class="trow"><span class="tzn">日本</span><span class="tval">06/21 17:58</span><span class="tsuf">JST</span></div>
-<div class="trow us"><span class="tzn">米国</span><span class="tval">06/21 04:58</span><span class="tsuf">EDT</span></div>
-</div>
+<div class="timecard"><span class="tk">取得</span><span class="tj">06/21 18:05 JST</span><span class="te">06/21 05:05 EDT</span></div>
+
+<div class="cols">
+
+<!-- ===== 左カラム：地合い判定 ===== -->
+<div class="col-left">
+<p class="colttl">🧭 地合い判定</p>
 
 <div class="badge warn">
 <p class="btop"><span class="ttag">プレ</span><span class="bname">🟡 上昇過熱・資金還流モード</span></p>
 <p class="bdetail">安易な売り厳禁・押し目待ち</p>
 </div>
 
-<div class="divwarn">⚠️ 半導体（SOXX）だけが異常に孤立。大口による強引な吊り上げ（歪み）を検知。</div>
+<div class="divwarn">⚠️ 半導体(SOXX)だけ異常孤立。大口の強引な吊り上げ(歪み)を検知。</div>
 
-<p class="sec">📊 表面の株価（イナゴの興奮度）</p>
+<p class="sec">📊 表面の株価</p>
 <div class="grid">
-<div class="cell"><p class="cl">QQQ ナスダック100</p><p class="cv up">+1.46%</p><span class="chip good">🟢 上昇</span><p class="basis">基準:+3.0%以上で短期天井</p></div>
-<div class="cell"><p class="cl">SPY S&amp;P500</p><p class="cv up">+0.15%</p><span class="chip good">🟢 横ばい圏</span><p class="basis">基準:+1.5%以上で利食い警戒</p></div>
-<div class="cell"><p class="cl">SOXX 半導体</p><p class="cv up">+4.45%</p><span class="chip bad">🔴 クライマックス</span><p class="basis">基準:+4.0%以上でクライマックス</p></div>
+<div class="cell"><p class="cl">QQQ</p><p class="cv up">+1.46%</p><span class="chip good">🟢 上昇</span></div>
+<div class="cell"><p class="cl">SPY</p><p class="cv up">+0.15%</p><span class="chip good">🟢 横ばい</span></div>
+<div class="cell"><p class="cl">SOXX</p><p class="cv up">+4.45%</p><span class="chip bad">🔴 過熱</span></div>
 </div>
 
-<p class="sec">⚖️ 裏の大口資金（天秤）</p>
+<p class="sec">⚖️ 裏の大口資金</p>
 <div class="grid">
-<div class="cell"><p class="cl">OIL 原油</p><p class="cv up">+0.53%</p><span class="chip good">🟢 安定</span><p class="basis">急騰しなければハイテクに無害</p></div>
-<div class="cell"><p class="cl">US10Y 米10年債金利</p><p class="cv down">-0.27%</p><span class="chip good">🟢 金利低下（ハイテク追い風）</span><p class="basis">金利低下はハイテクに追い風</p></div>
-<div class="cell"><p class="cl">VIX 恐怖指数</p><p class="cv flat">16.78</p><span class="chip good">🟢 安定推移</span><p class="basis">基準:20未満=通常/25以上=パニック</p></div>
+<div class="cell"><p class="cl">原油</p><p class="cv up">+0.53%</p><span class="chip good">🟢 安定</span></div>
+<div class="cell"><p class="cl">金利</p><p class="cv down">-0.27%</p><span class="chip good">🟢 金利低下</span></div>
+<div class="cell"><p class="cl">VIX</p><p class="cv flat">16.78</p><span class="chip good">🟢 安定</span></div>
 </div>
 
-<div class="regime good">VIXレジーム：🟢 通常モード（VIX20未満）</div>
-
-
-<p class="sec">🔬 出来高裏付け（実弾チェック）</p>
-<div class="vbadge good">
-<p class="vbname">🟢 裏付けあり（強）</p>
-<p class="vbdetail">出来高上位10に①半導体が6銘柄。実弾の裏付けは明確。INの土台は成立。</p>
+<div class="regime good">VIX：🟢 通常（20未満）</div>
 </div>
+
+<!-- ===== 右カラム：出来高裏付け ===== -->
+<div class="col-right">
+<p class="colttl">🔬 出来高裏付け（実弾チェック）</p>
+
+<div class="vbadge good"><span class="vbname">🟢 裏付けあり（強）</span><span class="vbdetail">出来高上位10に①半導体が6銘柄。実弾の裏付けは明確。INの土台は成立。</span></div>
 <div class="vtable">
-<div class="vrow vhead"><span class="vrank">#</span><span class="vtkr">銘柄</span><span class="vsec">セクター</span><span class="vrvol">出来高倍</span><span class="vchg">前日比</span></div>
-<div class="vrow tgt"><span class="vrank">1</span><span class="vtkr">★US.MRVL</span><span class="vsec">①半導体</span><span class="vrvol">4.20倍</span><span class="vchg up">+7.27%</span></div><div class="vrow "><span class="vrank">2</span><span class="vtkr">US.LMT</span><span class="vsec">⑥宇宙防衛</span><span class="vrvol">3.44倍</span><span class="vchg down">-4.01%</span></div><div class="vrow tgt"><span class="vrank">3</span><span class="vtkr">★US.ARM</span><span class="vsec">①半導体</span><span class="vrvol">2.56倍</span><span class="vchg up">+4.91%</span></div><div class="vrow "><span class="vrank">4</span><span class="vtkr">US.JNJ</span><span class="vsec">⑧ディフェンシブ</span><span class="vrvol">2.54倍</span><span class="vchg down">-2.48%</span></div><div class="vrow "><span class="vrank">5</span><span class="vtkr">US.RKLB</span><span class="vsec">⑥宇宙防衛</span><span class="vrvol">2.53倍</span><span class="vchg down">-0.69%</span></div><div class="vrow tgt"><span class="vrank">6</span><span class="vtkr">★US.MPWR</span><span class="vsec">①半導体</span><span class="vrvol">2.45倍</span><span class="vchg up">+7.97%</span></div><div class="vrow tgt"><span class="vrank">7</span><span class="vtkr">★US.QCOM</span><span class="vsec">①半導体</span><span class="vrvol">2.21倍</span><span class="vchg up">+6.17%</span></div><div class="vrow "><span class="vrank">8</span><span class="vtkr">US.JPM</span><span class="vsec">⑤銀行</span><span class="vrvol">2.20倍</span><span class="vchg down">-2.47%</span></div><div class="vrow tgt"><span class="vrank">9</span><span class="vtkr">★US.KLAC</span><span class="vsec">①半導体</span><span class="vrvol">2.20倍</span><span class="vchg up">+8.73%</span></div><div class="vrow tgt"><span class="vrank">10</span><span class="vtkr">★US.LRCX</span><span class="vsec">①半導体</span><span class="vrvol">2.15倍</span><span class="vchg up">+3.97%</span></div>
+<div class="vrow vhead"><span class="vrank">#</span><span class="vtkr">銘柄</span><span class="vrvol">出来高倍</span><span class="vchg">前日比</span></div>
+<div class="vrow tgt"><span class="vrank">1</span><span class="vtkr">★US.MRVL</span><span class="vrvol">4.20倍</span><span class="vchg up">+7.27%</span></div><div class="vrow "><span class="vrank">2</span><span class="vtkr">US.LMT</span><span class="vrvol">3.44倍</span><span class="vchg down">-4.01%</span></div><div class="vrow tgt"><span class="vrank">3</span><span class="vtkr">★US.ARM</span><span class="vrvol">2.56倍</span><span class="vchg up">+4.91%</span></div><div class="vrow "><span class="vrank">4</span><span class="vtkr">US.JNJ</span><span class="vrvol">2.54倍</span><span class="vchg down">-2.48%</span></div><div class="vrow "><span class="vrank">5</span><span class="vtkr">US.RKLB</span><span class="vrvol">2.53倍</span><span class="vchg down">-0.69%</span></div><div class="vrow tgt"><span class="vrank">6</span><span class="vtkr">★US.MPWR</span><span class="vrvol">2.45倍</span><span class="vchg up">+7.97%</span></div><div class="vrow tgt"><span class="vrank">7</span><span class="vtkr">★US.QCOM</span><span class="vrvol">2.21倍</span><span class="vchg up">+6.17%</span></div><div class="vrow "><span class="vrank">8</span><span class="vtkr">US.JPM</span><span class="vrvol">2.20倍</span><span class="vchg down">-2.47%</span></div><div class="vrow tgt"><span class="vrank">9</span><span class="vtkr">★US.KLAC</span><span class="vrvol">2.20倍</span><span class="vchg up">+8.73%</span></div><div class="vrow tgt"><span class="vrank">10</span><span class="vtkr">★US.LRCX</span><span class="vrvol">2.15倍</span><span class="vchg up">+3.97%</span></div>
 </div>
 
+</div>
+
+</div>
 
 <div class="insight">
 <p class="it">🧭 指揮官への戦略インサイト</p>
-<p class="ib">主要指数が過熱気味です。安易な売りは禁物、無理な新規INも避け、押し目を待ちます。</p>
+<p class="ib">主要指数が過熱。安易な売りは禁物、無理な新規INも避け押し目待ち。</p>
 </div>
 
 <p class="foot">神話ver2 ／ 地合い判定（自動生成）</p>
