@@ -2,7 +2,7 @@
 <html lang="ja"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>神話ver2 地合い判定</title>
+<title>神話ver2 司令塔</title>
 <style>
 :root{--bg:#f4f4f2;--card:#fff;--line:#e3e3df;--t1:#1a1a1a;--t2:#6b6b66;--t3:#9b9b95;--blue:#185fa5;
 --up:#1e7d50;--down:#c0392b;
@@ -18,12 +18,31 @@ body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,Bli
 .timecard .tk{font-size:11px;color:var(--t3);}
 .timecard .tj{font-weight:600;}
 .timecard .te{font-weight:600;color:var(--blue);margin-left:auto;}
+.sec{font-size:11px;color:var(--t2);font-weight:700;margin:6px 2px 7px;padding-bottom:4px;border-bottom:2px solid var(--line);}
 
-/* ===== 2カラムレイアウト ===== */
+/* 本命IN */
+.hwrap{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+@media(max-width:560px){.hwrap{grid-template-columns:1fr;}}
+.hcard{border-radius:12px;padding:12px 13px;border:1px solid var(--line);background:var(--card);}
+.hcard.hon{border:1.5px solid var(--up);background:var(--good-bg);}
+.hhead{display:flex;align-items:center;gap:8px;margin-bottom:2px;}
+.hkbn{font-size:11px;font-weight:700;}
+.htkr{font-size:17px;font-weight:700;}
+.hrank{margin-left:auto;font-size:11px;font-weight:700;background:var(--blue);color:#fff;border-radius:6px;padding:1px 7px;}
+.hname{font-size:11px;color:var(--t2);margin-bottom:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.hmetrics{display:flex;gap:12px;margin-bottom:8px;}
+.hm{display:flex;flex-direction:column;}
+.hm b{font-size:15px;font-weight:700;}
+.hm b.up{color:var(--up);}.hm b.down{color:var(--down);}
+.hm i{font-size:9px;color:var(--t3);font-style:normal;}
+.hlevels{display:flex;flex-direction:column;gap:2px;font-size:11px;color:var(--t2);}
+.hlevels b{color:var(--t1);}
+.hlevels .up b{color:var(--up);}.hlevels .down b{color:var(--down);}
+.hempty{background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:14px;text-align:center;font-size:12px;color:var(--t3);margin-bottom:12px;}
+
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
-@media(max-width:560px){.cols{grid-template-columns:1fr;}}  /* 狭い縦持ちスマホは上下に折り返し */
+@media(max-width:560px){.cols{grid-template-columns:1fr;}}
 .colttl{font-size:12px;color:var(--t2);font-weight:700;margin:0 2px 7px;padding-bottom:5px;border-bottom:2px solid var(--line);}
-
 .badge{border-radius:12px;padding:12px 14px;margin-bottom:9px;}
 .badge .btop{display:flex;align-items:center;gap:7px;margin:0 0 4px;flex-wrap:wrap;}
 .ttag{font-size:10px;font-weight:700;padding:1px 7px;border-radius:6px;background:rgba(0,0,0,.10);}
@@ -34,7 +53,7 @@ body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,Bli
 .badge.good{background:var(--good-bg);}.badge.good .bname,.badge.good .bdetail,.badge.good .ttag{color:var(--good-fg);}
 .badge.neutral{background:var(--neu-bg);}.badge.neutral .bname,.badge.neutral .bdetail,.badge.neutral .ttag{color:var(--neu-fg);}
 .divwarn{background:var(--bad-bg);color:var(--bad-fg);border-radius:10px;padding:9px 12px;font-size:11px;font-weight:600;line-height:1.45;margin-bottom:9px;}
-.sec{font-size:11px;color:var(--t2);font-weight:600;margin:2px 2px 6px;}
+.subttl{font-size:11px;color:var(--t2);font-weight:600;margin:2px 2px 6px;}
 .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:9px;}
 .cell{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 6px;text-align:center;}
 .cell .cl{font-size:10px;color:var(--t2);margin:0 0 2px;white-space:nowrap;}
@@ -48,7 +67,6 @@ body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,Bli
 .regime.good{background:var(--good-bg);color:var(--good-fg);}
 .regime.warn{background:var(--warn-bg);color:var(--warn-fg);}
 .regime.bad{background:var(--bad-bg);color:var(--bad-fg);}
-
 .vbadge{display:flex;flex-direction:column;gap:3px;border-radius:10px;padding:10px 13px;margin-bottom:8px;}
 .vbadge .vbname{font-size:13px;font-weight:700;}
 .vbadge .vbdetail{font-size:11px;line-height:1.45;opacity:.92;}
@@ -66,65 +84,77 @@ body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,Bli
 .vrvol{flex:1;text-align:right;font-weight:600;}
 .vchg{flex:1;text-align:right;}
 .vchg.up{color:var(--up);}.vchg.down{color:var(--down);}.vchg.flat{color:var(--t1);}
-
 .insight{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-top:12px;}
 .insight .it{font-size:11px;color:var(--t3);margin:0 0 5px;}
 .insight .ib{font-size:12px;line-height:1.6;margin:0;color:var(--t1);}
 .foot{text-align:center;font-size:10px;color:var(--t3);margin-top:8px;}
 </style></head>
 <body><div class="wrap">
-<div class="head">📊 神話ver2 地合い判定</div>
+<div class="head">📊 神話ver2 司令塔</div>
 
-<div class="timecard"><span class="tk">取得</span><span class="tj">06/21 18:05 JST</span><span class="te">06/21 05:05 EDT</span></div>
+<div class="timecard"><span class="tk">取得</span><span class="tj">06/21 23:37 JST</span><span class="te">06/21 10:37 EDT</span></div>
+
+<p class="sec">🎯 本命IN（判断AI・同時保有3枠）</p><div class="hwrap">
+<div class="hcard hon">
+<div class="hhead"><span class="hkbn">🎯本命</span><span class="htkr">US.ALAB</span><span class="hrank">S</span></div>
+<div class="hname">Astera Labs, Inc. - Common Stock</div>
+<div class="hmetrics">
+<span class="hm"><b class="up">+11.31%</b><i>前日比</i></span>
+<span class="hm"><b>3.84倍</b><i>出来高</i></span>
+<span class="hm"><b>AI100</b><i>スコア</i></span>
+</div>
+<div class="hlevels">
+<span>IN <b>$393.79〜$401.67</b></span>
+<span class="up">利確 <b>$500.48</b></span>
+<span class="down">損切 <b>$387.88</b></span>
+</div>
+</div>
+<div class="hcard hon">
+<div class="hhead"><span class="hkbn">🎯本命</span><span class="htkr">US.Q</span><span class="hrank">S</span></div>
+<div class="hname">Qnity Electronics, Inc. Common Stock</div>
+<div class="hmetrics">
+<span class="hm"><b class="up">+7.82%</b><i>前日比</i></span>
+<span class="hm"><b>3.29倍</b><i>出来高</i></span>
+<span class="hm"><b>AI92</b><i>スコア</i></span>
+</div>
+<div class="hlevels">
+<span>IN <b>$162.85〜$166.11</b></span>
+<span class="up">利確 <b>$202.78</b></span>
+<span class="down">損切 <b>$157.15</b></span>
+</div>
+</div></div>
 
 <div class="cols">
-
-<!-- ===== 左カラム：地合い判定 ===== -->
 <div class="col-left">
 <p class="colttl">🧭 地合い判定</p>
-
 <div class="badge warn">
-<p class="btop"><span class="ttag">プレ</span><span class="bname">🟡 上昇過熱・資金還流モード</span></p>
+<p class="btop"><span class="ttag">ザラ場</span><span class="bname">🟡 上昇過熱・資金還流モード</span></p>
 <p class="bdetail">安易な売り厳禁・押し目待ち</p>
 </div>
-
 <div class="divwarn">⚠️ 半導体(SOXX)だけ異常孤立。大口の強引な吊り上げ(歪み)を検知。</div>
-
-<p class="sec">📊 表面の株価</p>
+<p class="subttl">📊 表面の株価</p>
 <div class="grid">
 <div class="cell"><p class="cl">QQQ</p><p class="cv up">+1.46%</p><span class="chip good">🟢 上昇</span></div>
 <div class="cell"><p class="cl">SPY</p><p class="cv up">+0.15%</p><span class="chip good">🟢 横ばい</span></div>
 <div class="cell"><p class="cl">SOXX</p><p class="cv up">+4.45%</p><span class="chip bad">🔴 過熱</span></div>
 </div>
-
-<p class="sec">⚖️ 裏の大口資金</p>
+<p class="subttl">⚖️ 裏の大口資金</p>
 <div class="grid">
 <div class="cell"><p class="cl">原油</p><p class="cv up">+0.53%</p><span class="chip good">🟢 安定</span></div>
 <div class="cell"><p class="cl">金利</p><p class="cv down">-0.27%</p><span class="chip good">🟢 金利低下</span></div>
 <div class="cell"><p class="cl">VIX</p><p class="cv flat">16.78</p><span class="chip good">🟢 安定</span></div>
 </div>
-
 <div class="regime good">VIX：🟢 通常（20未満）</div>
 </div>
-
-<!-- ===== 右カラム：出来高裏付け ===== -->
 <div class="col-right">
 <p class="colttl">🔬 出来高裏付け（実弾チェック）</p>
-
-<div class="vbadge good"><span class="vbname">🟢 裏付けあり（強）</span><span class="vbdetail">出来高上位10に①半導体が6銘柄。実弾の裏付けは明確。INの土台は成立。</span></div>
-<div class="vtable">
-<div class="vrow vhead"><span class="vrank">#</span><span class="vtkr">銘柄</span><span class="vrvol">出来高倍</span><span class="vchg">前日比</span></div>
-<div class="vrow tgt"><span class="vrank">1</span><span class="vtkr">★US.MRVL</span><span class="vrvol">4.20倍</span><span class="vchg up">+7.27%</span></div><div class="vrow "><span class="vrank">2</span><span class="vtkr">US.LMT</span><span class="vrvol">3.44倍</span><span class="vchg down">-4.01%</span></div><div class="vrow tgt"><span class="vrank">3</span><span class="vtkr">★US.ARM</span><span class="vrvol">2.56倍</span><span class="vchg up">+4.91%</span></div><div class="vrow "><span class="vrank">4</span><span class="vtkr">US.JNJ</span><span class="vrvol">2.54倍</span><span class="vchg down">-2.48%</span></div><div class="vrow "><span class="vrank">5</span><span class="vtkr">US.RKLB</span><span class="vrvol">2.53倍</span><span class="vchg down">-0.69%</span></div><div class="vrow tgt"><span class="vrank">6</span><span class="vtkr">★US.MPWR</span><span class="vrvol">2.45倍</span><span class="vchg up">+7.97%</span></div><div class="vrow tgt"><span class="vrank">7</span><span class="vtkr">★US.QCOM</span><span class="vrvol">2.21倍</span><span class="vchg up">+6.17%</span></div><div class="vrow "><span class="vrank">8</span><span class="vtkr">US.JPM</span><span class="vrvol">2.20倍</span><span class="vchg down">-2.47%</span></div><div class="vrow tgt"><span class="vrank">9</span><span class="vtkr">★US.KLAC</span><span class="vrvol">2.20倍</span><span class="vchg up">+8.73%</span></div><div class="vrow tgt"><span class="vrank">10</span><span class="vtkr">★US.LRCX</span><span class="vrvol">2.15倍</span><span class="vchg up">+3.97%</span></div>
+<div class="vbadge good"><span class="vbname">🟢 裏付けあり（強）</span><span class="vbdetail">出来高上位10に半導体が8銘柄。実弾の裏付けは明確。</span></div><div class="vtable"><div class="vrow vhead"><span class="vrank">#</span><span class="vtkr">銘柄</span><span class="vrvol">出来高倍</span><span class="vchg">前日比</span></div><div class="vrow tgt"><span class="vrank">1</span><span class="vtkr">★US.ALAB</span><span class="vrvol">3.84倍</span><span class="vchg up">+11.31%</span></div><div class="vrow tgt"><span class="vrank">2</span><span class="vtkr">★US.Q</span><span class="vrvol">3.29倍</span><span class="vchg up">+7.82%</span></div><div class="vrow tgt"><span class="vrank">3</span><span class="vtkr">★US.MRVL</span><span class="vrvol">4.10倍</span><span class="vchg up">+7.27%</span></div><div class="vrow tgt"><span class="vrank">4</span><span class="vtkr">★US.TER</span><span class="vrvol">4.83倍</span><span class="vchg up">+7.19%</span></div><div class="vrow tgt"><span class="vrank">5</span><span class="vtkr">★US.SMTC</span><span class="vrvol">4.61倍</span><span class="vchg up">+5.35%</span></div><div class="vrow tgt"><span class="vrank">6</span><span class="vtkr">★US.AOSL</span><span class="vrvol">2.96倍</span><span class="vchg up">+11.33%</span></div><div class="vrow "><span class="vrank">7</span><span class="vtkr">US.FLEX</span><span class="vrvol">14.56倍</span><span class="vchg up">+3.13%</span></div><div class="vrow tgt"><span class="vrank">8</span><span class="vtkr">★US.TXN</span><span class="vrvol">2.61倍</span><span class="vchg up">+6.95%</span></div><div class="vrow tgt"><span class="vrank">9</span><span class="vtkr">★US.ARM</span><span class="vrvol">2.61倍</span><span class="vchg up">+4.91%</span></div><div class="vrow "><span class="vrank">10</span><span class="vtkr">US.SSYS</span><span class="vrvol">4.07倍</span><span class="vchg up">+1.13%</span></div></div>
 </div>
-
-</div>
-
 </div>
 
 <div class="insight">
 <p class="it">🧭 指揮官への戦略インサイト</p>
 <p class="ib">主要指数が過熱。安易な売りは禁物、無理な新規INも避け押し目待ち。</p>
 </div>
-
-<p class="foot">神話ver2 ／ 地合い判定（自動生成）</p>
+<p class="foot">神話ver2 ／ 司令塔（自動生成）</p>
 </div></body></html>
