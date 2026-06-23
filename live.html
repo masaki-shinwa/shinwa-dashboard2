@@ -7,101 +7,117 @@
 <meta http-equiv="Expires" content="0">
 <title>神話相場ライブ</title>
 <style>
-:root{--bg:#f4f4f2;--card:#fff;--line:#e3e3df;--t1:#1a1a1a;--t2:#6b6b66;--t3:#9b9b95;--blue:#185fa5;
---up:#1e7d50;--down:#c0392b;
---good-bg:#e3f6ec;--good-fg:#1e7d50;--warn-bg:#fdf3da;--warn-fg:#8a5a00;--bad-bg:#fdecea;--bad-fg:#c0392b;--neu-bg:#efeee9;--neu-fg:#444;}
-@media(prefers-color-scheme:dark){:root{--bg:#0d0d0f;--card:#1a1a1d;--line:#2a2a2e;--t1:#ececec;--t2:#9a9a9a;--t3:#6a6a6a;--blue:#5aa6ef;
---up:#4cd187;--down:#f0817a;
---good-bg:#10331f;--good-fg:#4cd187;--warn-bg:#3a2e0e;--warn-fg:#f0c64c;--bad-bg:#3a1714;--bad-fg:#f0817a;--neu-bg:#222226;--neu-fg:#bcbcbc;}}
+:root{--bg:#fbf7fb;--card:#fff;--line:#f0e6ef;--t1:#3a2f3a;--t2:#8a7f8a;--t3:#b8acb8;--accent:#d98bc4;
+--up:#2fa86a;--down:#e06a8a;
+--good-bg:#e7f7ee;--good-fg:#2fa86a;--warn-bg:#fdf2dc;--warn-fg:#c98a2e;--bad-bg:#fde8ee;--bad-fg:#e06a8a;--neu-bg:#f1edf1;--neu-fg:#8a7f8a;}
+@media(prefers-color-scheme:dark){:root{--bg:#15101a;--card:#1f1825;--line:#352a3d;--t1:#f0e8f2;--t2:#a99cae;--t3:#6f6276;--accent:#e8a8d8;
+--up:#5cd99a;--down:#f08aa8;
+--good-bg:#15331f;--good-fg:#5cd99a;--warn-bg:#3a2e12;--warn-fg:#f0c878;--bad-bg:#3a1722;--bad-fg:#f08aa8;--neu-bg:#272030;--neu-fg:#a99cae;}}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;padding:11px;}
-.wrap{max-width:860px;margin:0 auto;}
-.head{display:flex;align-items:center;gap:8px;margin-bottom:9px;font-size:15px;font-weight:600;}
-.backbtn{margin-left:auto;font-size:12px;font-weight:700;color:#fff;background:var(--t3);border-radius:8px;padding:5px 12px;text-decoration:none;}
-.timecard{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:8px 12px;margin-bottom:9px;font-size:13px;}
+body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;padding:13px;}
+.wrap{max-width:560px;margin:0 auto;}
+.head{display:flex;align-items:center;gap:8px;margin-bottom:11px;font-size:16px;font-weight:700;}
+.backbtn{margin-left:auto;font-size:12px;font-weight:700;color:#fff;background:var(--accent);border-radius:14px;padding:6px 13px;text-decoration:none;box-shadow:0 2px 6px rgba(217,139,196,.35);}
+.timecard{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:9px 14px;margin-bottom:11px;font-size:13px;box-shadow:0 2px 10px rgba(180,150,180,.10);}
 .timecard .tk{font-size:11px;color:var(--t3);}
-.timecard .tj{font-weight:600;}
-.timecard .te{font-weight:600;color:var(--blue);margin-left:auto;}
-.sec{font-size:11px;color:var(--t2);font-weight:700;margin:6px 2px 7px;padding-bottom:4px;border-bottom:2px solid var(--line);}
-.hwrap{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:12px;}
-.hcard{border-radius:12px;padding:12px 13px;border:1px solid var(--line);background:var(--card);border-left:4px solid var(--line);}
-.hcard.st-good{border-left-color:var(--up);}
-.hcard.st-warn{border-left-color:var(--warn-fg);}
-.hcard.st-bad{border-left-color:var(--down);}
-.hcard.st-neutral{border-left-color:var(--t3);}
-.hhead{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
-.htkr{font-size:17px;font-weight:700;}
-.state-badge{margin-left:auto;font-size:12px;font-weight:700;border-radius:6px;padding:2px 9px;}
-.state-badge.good{background:var(--good-bg);color:var(--good-fg);}
-.state-badge.warn{background:var(--warn-bg);color:var(--warn-fg);}
-.state-badge.bad{background:var(--bad-bg);color:var(--bad-fg);}
-.state-badge.neutral{background:var(--neu-bg);color:var(--neu-fg);}
-.hname{font-size:11px;color:var(--t2);margin-bottom:8px;}
-.hmetrics{display:flex;gap:14px;margin-bottom:10px;flex-wrap:wrap;}
-.hm{display:flex;flex-direction:column;}
-.hm b{font-size:16px;font-weight:700;}
-.hm b.up{color:var(--up);}.hm b.down{color:var(--down);}
-.hm i{font-size:9px;color:var(--t3);font-style:normal;}
-.hlevels{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--t2);}
-.hlevels b{color:var(--t1);}
-.hlevels b.up{color:var(--up);}.hlevels b.down{color:var(--down);}
-.chip{display:inline-block;font-size:10px;font-weight:600;padding:1px 6px;border-radius:6px;}
+.timecard .tj{font-weight:700;}
+.timecard .te{font-weight:700;color:var(--accent);margin-left:auto;}
+.sec{font-size:11px;color:var(--t2);font-weight:700;margin:8px 4px 9px;}
+.card{border-radius:18px;padding:14px 15px;background:var(--card);border:1px solid var(--line);margin-bottom:11px;box-shadow:0 3px 14px rgba(180,150,180,.12);border-top:4px solid var(--line);}
+.card.st-good{border-top-color:var(--good-fg);}
+.card.st-warn{border-top-color:var(--warn-fg);}
+.card.st-bad{border-top-color:var(--bad-fg);}
+.card.st-neutral{border-top-color:var(--t3);}
+.chead{display:flex;align-items:center;gap:8px;margin-bottom:3px;}
+.ctkr{font-size:18px;font-weight:800;letter-spacing:.5px;}
+.cname{font-size:11px;color:var(--t2);}
+.state{margin-left:auto;font-size:13px;font-weight:800;border-radius:14px;padding:4px 12px;}
+.state.good{background:var(--good-bg);color:var(--good-fg);}
+.state.warn{background:var(--warn-bg);color:var(--warn-fg);}
+.state.bad{background:var(--bad-bg);color:var(--bad-fg);}
+.state.neutral{background:var(--neu-bg);color:var(--neu-fg);}
+.ssub{font-size:11px;color:var(--t2);margin:0 0 11px 1px;}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:11px;}
+.m{background:var(--bg);border-radius:12px;padding:8px 4px;text-align:center;}
+.m b{display:block;font-size:15px;font-weight:800;}
+.m b.up{color:var(--up);}.m b.down{color:var(--down);}
+.m b.cr-good{color:var(--up);}.m b.cr-bad{color:var(--down);}.m b.cr-neu{color:var(--t3);}
+.m i{font-size:9px;color:var(--t3);font-style:normal;}
+.levels{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--t2);}
+.levels b{color:var(--t1);}
+.levels b.up{color:var(--up);}.levels b.down{color:var(--down);}
+.chip{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;border-radius:8px;}
 .chip.good{background:var(--good-bg);color:var(--good-fg);}
 .chip.bad{background:var(--bad-bg);color:var(--bad-fg);}
-.foot{text-align:center;font-size:10px;color:var(--t3);margin-top:8px;}
+.foot{text-align:center;font-size:10px;color:var(--t3);margin-top:10px;}
 </style></head>
 <body><div class="wrap">
-<div class="head">⚡ 神話相場ライブ<a class="backbtn" href="index.html">← 司令塔へ戻る</a></div>
-<div class="timecard"><span class="tk">取得</span><span class="tj">06/23 22:00 JST</span><span class="te">06/23 09:00 EDT</span></div>
-<p class="sec">🧭 地合い（15分足・moomooライブ／WMSR×StochRSI）</p>
-<div class="hwrap">
-<div class="hcard st-neutral">
-<div class="hhead"><span class="htkr">QQQ</span>
-<span class="state-badge neutral">⚪ 中立</span></div>
-<div class="hname">ナスダック100</div>
-<div class="hmetrics">
-<span class="hm"><b>737.95</b><i>価格</i></span>
-<span class="hm"><b class="up">+0.29%</b><i>前足比</i></span>
-<span class="hm"><b>K 45.1</b><i>StochRSI</i></span>
-<span class="hm"><b>WR -15.3</b><i>WMSR</i></span>
+<div class="head">⚡ 神話相場ライブ<a class="backbtn" href="index.html">← 司令塔へ</a></div>
+<div class="timecard"><span class="tk">取得</span><span class="tj">06/23 22:09 JST</span><span class="te">06/23 09:09 EDT</span></div>
+<p class="sec">🧭 地合い（15分足・WMSR × StochRSI クロス）</p>
+
+<div class="card st-good">
+<div class="chead">
+<span class="ctkr">QQQ</span>
+<span class="cname">ナスダック100</span>
+<span class="state good">🍃 回復中</span>
 </div>
-<div class="hlevels">
+<div class="ssub">下から戻し中</div>
+<div class="metrics">
+<div class="m"><b>737.95</b><i>価格</i></div>
+<div class="m"><b class="up">+0.29%</b><i>前足比</i></div>
+<div class="m"><b>45.1</b><i>StochRSI K</i></div>
+<div class="m"><b>29.5</b><i>D</i></div>
+<div class="m"><b>-15.3</b><i>WMSR</i></div>
+<div class="m"><b class="cr-good">GC</b><i>クロス</i></div>
+</div>
+<div class="levels">
 <span>VWAP <b>738.09</b> <span class="chip bad">下</span></span>
 <span>高値乖離 <b class="up">-0.08%</b></span>
-<span>出来高 <b>4026967</b>（前足比 <b class="up">+127.7%</b>）</span>
+<span>出来高 <b class="up">+127.7%</b></span>
 </div>
 </div>
-<div class="hcard st-neutral">
-<div class="hhead"><span class="htkr">SPY</span>
-<span class="state-badge neutral">⚪ 中立</span></div>
-<div class="hname">S&P500</div>
-<div class="hmetrics">
-<span class="hm"><b>744.39</b><i>価格</i></span>
-<span class="hm"><b class="up">+0.16%</b><i>前足比</i></span>
-<span class="hm"><b>K 29.4</b><i>StochRSI</i></span>
-<span class="hm"><b>WR -51.7</b><i>WMSR</i></span>
+<div class="card st-good">
+<div class="chead">
+<span class="ctkr">SPY</span>
+<span class="cname">S&P500</span>
+<span class="state good">🍃 回復中</span>
 </div>
-<div class="hlevels">
+<div class="ssub">下から戻し中</div>
+<div class="metrics">
+<div class="m"><b>744.39</b><i>価格</i></div>
+<div class="m"><b class="up">+0.16%</b><i>前足比</i></div>
+<div class="m"><b>29.4</b><i>StochRSI K</i></div>
+<div class="m"><b>13.7</b><i>D</i></div>
+<div class="m"><b>-51.7</b><i>WMSR</i></div>
+<div class="m"><b class="cr-good">GC</b><i>クロス</i></div>
+</div>
+<div class="levels">
 <span>VWAP <b>745.12</b> <span class="chip bad">下</span></span>
 <span>高値乖離 <b class="up">-0.18%</b></span>
-<span>出来高 <b>9245184</b>（前足比 <b class="up">+424.5%</b>）</span>
+<span>出来高 <b class="up">+424.5%</b></span>
 </div>
 </div>
-<div class="hcard st-good">
-<div class="hhead"><span class="htkr">SOXX</span>
-<span class="state-badge good">🟢 強い</span></div>
-<div class="hname">半導体</div>
-<div class="hmetrics">
-<span class="hm"><b>655.01</b><i>価格</i></span>
-<span class="hm"><b class="up">+0.83%</b><i>前足比</i></span>
-<span class="hm"><b>K 55.2</b><i>StochRSI</i></span>
-<span class="hm"><b>WR -6.3</b><i>WMSR</i></span>
+<div class="card st-good">
+<div class="chead">
+<span class="ctkr">SOXX</span>
+<span class="cname">半導体</span>
+<span class="state good">🚀 強い</span>
 </div>
-<div class="hlevels">
+<div class="ssub">VWAP上＋上昇中</div>
+<div class="metrics">
+<div class="m"><b>655.01</b><i>価格</i></div>
+<div class="m"><b class="up">+0.83%</b><i>前足比</i></div>
+<div class="m"><b>55.2</b><i>StochRSI K</i></div>
+<div class="m"><b>32.1</b><i>D</i></div>
+<div class="m"><b>-6.3</b><i>WMSR</i></div>
+<div class="m"><b class="cr-neu">—</b><i>クロス</i></div>
+</div>
+<div class="levels">
 <span>VWAP <b>650.28</b> <span class="chip good">上</span></span>
 <span>高値乖離 <b class="up">-0.09%</b></span>
-<span>出来高 <b>895664</b>（前足比 <b class="up">+278.9%</b>）</span>
+<span>出来高 <b class="up">+278.9%</b></span>
 </div>
-</div></div>
+</div>
 <p class="foot">神話相場ライブ ／ 状態は叩き台ロジック（自動生成）</p>
 </div></body></html>
