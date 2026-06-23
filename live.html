@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>神話相場ライブ</title>
+<style>
+:root{--bg:#f4f4f2;--card:#fff;--line:#e3e3df;--t1:#1a1a1a;--t2:#6b6b66;--t3:#9b9b95;--blue:#185fa5;
+--up:#1e7d50;--down:#c0392b;
+--good-bg:#e3f6ec;--good-fg:#1e7d50;--bad-bg:#fdecea;--bad-fg:#c0392b;}
+@media(prefers-color-scheme:dark){:root{--bg:#0d0d0f;--card:#1a1a1d;--line:#2a2a2e;--t1:#ececec;--t2:#9a9a9a;--t3:#6a6a6a;--blue:#5aa6ef;
+--up:#4cd187;--down:#f0817a;
+--good-bg:#10331f;--good-fg:#4cd187;--bad-bg:#3a1714;--bad-fg:#f0817a;}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;padding:11px;}
+.wrap{max-width:860px;margin:0 auto;}
+.head{display:flex;align-items:center;gap:8px;margin-bottom:9px;font-size:15px;font-weight:600;}
+.backbtn{margin-left:auto;font-size:12px;font-weight:700;color:#fff;background:var(--t3);border-radius:8px;padding:5px 12px;text-decoration:none;}
+.timecard{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:8px 12px;margin-bottom:9px;font-size:13px;}
+.timecard .tk{font-size:11px;color:var(--t3);}
+.timecard .tj{font-weight:600;}
+.timecard .te{font-weight:600;color:var(--blue);margin-left:auto;}
+.sec{font-size:11px;color:var(--t2);font-weight:700;margin:6px 2px 7px;padding-bottom:4px;border-bottom:2px solid var(--line);}
+.hwrap{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:12px;}
+.hcard{border-radius:12px;padding:12px 13px;border:1px solid var(--line);background:var(--card);}
+.hhead{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.htkr{font-size:17px;font-weight:700;}
+.hrank{margin-left:auto;font-size:11px;font-weight:700;background:var(--blue);color:#fff;border-radius:6px;padding:1px 7px;}
+.hmetrics{display:flex;gap:16px;margin-bottom:10px;}
+.hm{display:flex;flex-direction:column;}
+.hm b{font-size:16px;font-weight:700;}
+.hm b.up{color:var(--up);}.hm b.down{color:var(--down);}
+.hm i{font-size:9px;color:var(--t3);font-style:normal;}
+.hlevels{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--t2);}
+.hlevels b{color:var(--t1);}
+.hlevels b.up{color:var(--up);}.hlevels b.down{color:var(--down);}
+.chip{display:inline-block;font-size:10px;font-weight:600;padding:1px 6px;border-radius:6px;}
+.chip.good{background:var(--good-bg);color:var(--good-fg);}
+.chip.bad{background:var(--bad-bg);color:var(--bad-fg);}
+.foot{text-align:center;font-size:10px;color:var(--t3);margin-top:8px;}
+</style></head>
+<body><div class="wrap">
+<div class="head">⚡ 神話相場ライブ<a class="backbtn" href="index.html">← 司令塔へ戻る</a></div>
+<div class="timecard"><span class="tk">取得</span><span class="tj">06/23 21:22 JST</span><span class="te">06/23 08:22 EDT</span></div>
+<p class="sec">🧭 地合い（15分足・moomooライブ）</p>
+<div class="hwrap">
+<div class="hcard">
+<div class="hhead"><span class="htkr">QQQ</span>
+<span class="hrank">ナスダック100</span></div>
+<div class="hmetrics">
+<span class="hm"><b>737.95</b><i>価格</i></span>
+<span class="hm"><b class="up">+0.29%</b><i>前足比</i></span>
+<span class="hm"><b>K 45.1</b><i>StochRSI</i></span>
+</div>
+<div class="hlevels">
+<span>VWAP <b>738.09</b> <span class="chip bad">下</span></span>
+<span>高値乖離 <b class="up">-0.08%</b></span>
+<span>出来高 <b>4026967</b>（前足比 <b class="up">+127.7%</b>）</span>
+</div>
+</div>
+<div class="hcard">
+<div class="hhead"><span class="htkr">SPY</span>
+<span class="hrank">S&P500</span></div>
+<div class="hmetrics">
+<span class="hm"><b>744.39</b><i>価格</i></span>
+<span class="hm"><b class="up">+0.16%</b><i>前足比</i></span>
+<span class="hm"><b>K 29.4</b><i>StochRSI</i></span>
+</div>
+<div class="hlevels">
+<span>VWAP <b>745.12</b> <span class="chip bad">下</span></span>
+<span>高値乖離 <b class="up">-0.18%</b></span>
+<span>出来高 <b>9245184</b>（前足比 <b class="up">+424.5%</b>）</span>
+</div>
+</div>
+<div class="hcard">
+<div class="hhead"><span class="htkr">SOXX</span>
+<span class="hrank">半導体</span></div>
+<div class="hmetrics">
+<span class="hm"><b>655.01</b><i>価格</i></span>
+<span class="hm"><b class="up">+0.83%</b><i>前足比</i></span>
+<span class="hm"><b>K 55.2</b><i>StochRSI</i></span>
+</div>
+<div class="hlevels">
+<span>VWAP <b>650.28</b> <span class="chip good">上</span></span>
+<span>高値乖離 <b class="up">-0.09%</b></span>
+<span>出来高 <b>895664</b>（前足比 <b class="up">+278.9%</b>）</span>
+</div>
+</div></div>
+<p class="foot">神話相場ライブ ／ 判定なし・数値のみ（自動生成）</p>
+</div></body></html>
