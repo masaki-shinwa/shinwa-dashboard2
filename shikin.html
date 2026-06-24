@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>神話資金フロー</title>
+<style>
+:root{--bg:#fbf7fb;--card:#fff;--line:#f6e3f0;--t1:#5a4a58;--t2:#9a8a98;--t3:#b8acb8;--accent:#e6a8d8;
+--up:#2fa86a;--down:#e06a8a;--track:#f4eef3;--midline:#e0cede;
+--pos:#7fd4a8;--neg:#f095b0;
+--s:#2fa86a;--n:#9a8a98;--w:#d99a2e;--d:#e06a8a;
+--s-top:#9fe3c4;--n-top:#e3d4e0;--w-top:#f5d79a;--d-top:#f4b0c4;}
+@media(prefers-color-scheme:dark){:root{--bg:#15101a;--card:#241b2b;--line:#3d2f44;--t1:#f0e8f2;--t2:#a99cae;--t3:#6f6276;--accent:#e8a8d8;
+--up:#5cd99a;--down:#f08aa8;--track:#2a2232;--midline:#473a50;
+--pos:#5cc99a;--neg:#e88aa6;
+--s:#5cd99a;--n:#a99cae;--w:#f0c878;--d:#f08aa8;
+--s-top:#2c6b4f;--n-top:#473a50;--w-top:#6b5320;--d-top:#6b2f42;}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;padding:13px;}
+.wrap{max-width:560px;margin:0 auto;}
+.head{display:flex;align-items:center;gap:7px;margin-bottom:12px;}
+.htitle{font-size:19px;font-weight:800;}
+.nav{font-size:11px;font-weight:700;color:#fff;background:var(--accent);border-radius:15px;padding:6px 12px;text-decoration:none;box-shadow:0 3px 8px rgba(230,168,216,.4);}
+.timecard{display:flex;align-items:center;gap:9px;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:8px 14px;margin-bottom:13px;font-size:12px;box-shadow:0 3px 12px rgba(220,180,220,.15);}
+.timecard .tk{font-size:11px;color:var(--t3);}
+.timecard .tj{font-weight:700;}
+.timecard .te{font-weight:700;color:var(--accent);margin-left:auto;}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:12px 13px;box-shadow:0 4px 14px rgba(220,180,220,.18);border-top:5px solid var(--line);}
+.card.c-s{border-top-color:var(--s-top);}
+.card.c-n{border-top-color:var(--n-top);}
+.card.c-w{border-top-color:var(--w-top);}
+.card.c-d{border-top-color:var(--d-top);}
+.card.ng{opacity:.6;}
+.ctop{display:flex;align-items:center;gap:5px;margin-bottom:2px;}
+.emoji{font-size:16px;}
+.tkr{font-size:16px;font-weight:800;}
+.ratio{font-size:16px;font-weight:800;margin-left:auto;}
+.lab{font-size:11px;font-weight:700;margin-bottom:7px;padding-bottom:7px;border-bottom:1.5px dashed var(--line);}
+.c-s{color:var(--s);}.c-n{color:var(--n);}.c-w{color:var(--w);}.c-d{color:var(--d);}
+.bars{display:flex;flex-direction:column;gap:4px;}
+.brow{display:flex;align-items:center;gap:3px;}
+.bl{font-size:9px;width:30px;color:var(--t3);font-weight:700;}
+.track{flex:1;height:12px;background:var(--track);border-radius:6px;position:relative;overflow:hidden;min-width:30px;}
+.mid{position:absolute;left:50%;top:0;width:1.5px;height:100%;background:var(--midline);}
+.seg{position:absolute;top:0;height:100%;}
+.seg.pos{left:50%;background:var(--pos);border-radius:0 5px 5px 0;}
+.seg.neg{right:50%;background:var(--neg);border-radius:5px 0 0 5px;}
+.seg.faint{opacity:.4;}
+.bn{font-size:10px;width:30px;text-align:right;font-weight:700;}
+.bn.up{color:var(--up);}.bn.down{color:var(--down);}
+.cont{font-size:9px;color:var(--t3);margin-top:7px;padding-top:6px;border-top:1px solid var(--line);}
+.foot{text-align:center;font-size:10px;color:var(--t3);margin-top:12px;}
+</style></head>
+<body><div class="wrap">
+<div class="head"><span class="htitle">💖 神話資金フロー</span>
+<a class="nav" href="index.html" style="margin-left:auto;">🏠 司令塔</a>
+<a class="nav" href="live.html">⚡ ライブ</a></div>
+<div class="timecard"><span class="tk">🕒 更新</span><span class="tj">06/24 21:12 JST</span><span class="te">06/24 08:12 EDT</span></div>
+<div class="grid">
+<div class="card c-s">
+<div class="ctop">
+<span class="emoji">🦄</span>
+<span class="tkr">ALAB</span>
+<span class="ratio c-s">+30.6%</span>
+</div>
+<div class="lab c-s">◎ 本物寄り</div>
+<div class="bars"><div class="brow"><span class="bl">超大口</span><div class="track"><div class="seg pos" style="width:0.8566423531761733%"></div><div class="mid"></div></div><span class="bn up">+8</span></div><div class="brow"><span class="bl">大口</span><div class="track"><div class="seg pos" style="width:2.116470747182712%"></div><div class="mid"></div></div><span class="bn up">+21</span></div><div class="brow"><span class="bl">中口</span><div class="track"><div class="seg pos" style="width:1.5932850024125977%"></div><div class="mid"></div></div><span class="bn up">+15</span></div><div class="brow"><span class="bl">小口</span><div class="track"><div class="seg neg" style="width:0.8063953823142506%"></div><div class="mid"></div></div><span class="bn down">-8</span></div></div>
+<div class="cont">📅 履歴1日</div>
+</div>
+<div class="card c-n">
+<div class="ctop">
+<span class="emoji">🍓</span>
+<span class="tkr">AMD</span>
+<span class="ratio c-n">+3.5%</span>
+</div>
+<div class="lab c-n">🌱 やや買い</div>
+<div class="bars"><div class="brow"><span class="bl">超大口</span><div class="track"><div class="seg pos" style="width:0.6918386375160405%"></div><div class="mid"></div></div><span class="bn up">+7</span></div><div class="brow"><span class="bl">大口</span><div class="track"><div class="seg pos" style="width:1.2182276269890646%"></div><div class="mid"></div></div><span class="bn up">+12</span></div><div class="brow"><span class="bl">中口</span><div class="track"><div class="seg neg" style="width:4.201916597114374%"></div><div class="mid"></div></div><span class="bn down">-41</span></div><div class="brow"><span class="bl">小口</span><div class="track"><div class="seg pos" style="width:5.411733735038899%"></div><div class="mid"></div></div><span class="bn up">+53</span></div></div>
+<div class="cont">📅 履歴1日</div>
+</div>
+<div class="card c-n">
+<div class="ctop">
+<span class="emoji">🐰</span>
+<span class="tkr">AVGO</span>
+<span class="ratio c-n">-2.5%</span>
+</div>
+<div class="lab c-n">⚪ 中立</div>
+<div class="bars"><div class="brow"><span class="bl">超大口</span><div class="track"><div class="seg pos faint" style="width:0.0%"></div><div class="mid"></div></div><span class="bn up">+0</span></div><div class="brow"><span class="bl">大口</span><div class="track"><div class="seg neg" style="width:0.9696801691675958%"></div><div class="mid"></div></div><span class="bn down">-9</span></div><div class="brow"><span class="bl">中口</span><div class="track"><div class="seg pos" style="width:3.9488022419137585%"></div><div class="mid"></div></div><span class="bn up">+38</span></div><div class="brow"><span class="bl">小口</span><div class="track"><div class="seg pos" style="width:34.485542674164854%"></div><div class="mid"></div></div><span class="bn up">+335</span></div></div>
+<div class="cont">📅 履歴1日</div>
+</div>
+<div class="card c-n">
+<div class="ctop">
+<span class="emoji">💚</span>
+<span class="tkr">NVDA</span>
+<span class="ratio c-n">-4.5%</span>
+</div>
+<div class="lab c-n">⚪ 中立</div>
+<div class="bars"><div class="brow"><span class="bl">超大口</span><div class="track"><div class="seg neg" style="width:1.716889152890141%"></div><div class="mid"></div></div><span class="bn down">-17</span></div><div class="brow"><span class="bl">大口</span><div class="track"><div class="seg neg" style="width:8.343251501255802%"></div><div class="mid"></div></div><span class="bn down">-81</span></div><div class="brow"><span class="bl">中口</span><div class="track"><div class="seg pos" style="width:1.690892005078532%"></div><div class="mid"></div></div><span class="bn up">+16</span></div><div class="brow"><span class="bl">小口</span><div class="track"><div class="seg pos" style="width:10.340609782936259%"></div><div class="mid"></div></div><span class="bn up">+100</span></div></div>
+<div class="cont">📅 履歴1日</div>
+</div>
+<div class="card c-w">
+<div class="ctop">
+<span class="emoji">🍎</span>
+<span class="tkr">AAPL</span>
+<span class="ratio c-w">-6.3%</span>
+</div>
+<div class="lab c-w">⚠️ やや売り</div>
+<div class="bars"><div class="brow"><span class="bl">超大口</span><div class="track"><div class="seg neg" style="width:9.195481346683838%"></div><div class="mid"></div></div><span class="bn down">-89</span></div><div class="brow"><span class="bl">大口</span><div class="track"><div class="seg pos" style="width:2.249499342858256%"></div><div class="mid"></div></div><span class="bn up">+22</span></div><div class="brow"><span class="bl">中口</span><div class="track"><div class="seg pos" style="width:9.388929310798948%"></div><div class="mid"></div></div><span class="bn up">+91</span></div><div class="brow"><span class="bl">小口</span><div class="track"><div class="seg pos" style="width:50%"></div><div class="mid"></div></div><span class="bn up">+485</span></div></div>
+<div class="cont">📅 履歴1日</div>
+</div>
+<div class="card c-w">
+<div class="ctop">
+<span class="emoji">💧</span>
+<span class="tkr">MU</span>
+<span class="ratio c-w">-7.9%</span>
+</div>
+<div class="lab c-w">⚠️ やや売り</div>
+<div class="bars"><div class="brow"><span class="bl">超大口</span><div class="track"><div class="seg neg" style="width:23.740699623531913%"></div><div class="mid"></div></div><span class="bn down">-230</span></div><div class="brow"><span class="bl">大口</span><div class="track"><div class="seg pos" style="width:2.7608455176454294%"></div><div class="mid"></div></div><span class="bn up">+27</span></div><div class="brow"><span class="bl">中口</span><div class="track"><div class="seg pos" style="width:4.092616339551405%"></div><div class="mid"></div></div><span class="bn up">+40</span></div><div class="brow"><span class="bl">小口</span><div class="track"><div class="seg pos" style="width:41.8599087673942%"></div><div class="mid"></div></div><span class="bn up">+406</span></div></div>
+<div class="cont">📅 履歴1日</div>
+</div>
+<div class="card c-d">
+<div class="ctop">
+<span class="emoji">🔥</span>
+<span class="tkr">SMCI</span>
+<span class="ratio c-d">-12.0%</span>
+</div>
+<div class="lab c-d">🔻 大口売り</div>
+<div class="bars"><div class="brow"><span class="bl">超大口</span><div class="track"><div class="seg neg" style="width:2.374428154358317%"></div><div class="mid"></div></div><span class="bn down">-23</span></div><div class="brow"><span class="bl">大口</span><div class="track"><div class="seg neg" style="width:0.6168865523132023%"></div><div class="mid"></div></div><span class="bn down">-6</span></div><div class="brow"><span class="bl">中口</span><div class="track"><div class="seg neg" style="width:1.2925523100398326%"></div><div class="mid"></div></div><span class="bn down">-13</span></div><div class="brow"><span class="bl">小口</span><div class="track"><div class="seg neg faint" style="width:0.3256326581118541%"></div><div class="mid"></div></div><span class="bn down">-3</span></div></div>
+<div class="cont">📅 履歴1日</div>
+</div>
+<div class="card c-d">
+<div class="ctop">
+<span class="emoji">🌏</span>
+<span class="tkr">TSM</span>
+<span class="ratio c-d">-16.0%</span>
+</div>
+<div class="lab c-d">🔻 大口売り</div>
+<div class="bars"><div class="brow"><span class="bl">超大口</span><div class="track"><div class="seg neg faint" style="width:0.20479859035005182%"></div><div class="mid"></div></div><span class="bn down">-2</span></div><div class="brow"><span class="bl">大口</span><div class="track"><div class="seg neg" style="width:6.096250691636121%"></div><div class="mid"></div></div><span class="bn down">-59</span></div><div class="brow"><span class="bl">中口</span><div class="track"><div class="seg pos" style="width:1.139975824252693%"></div><div class="mid"></div></div><span class="bn up">+11</span></div><div class="brow"><span class="bl">小口</span><div class="track"><div class="seg neg" style="width:1.5779079341250855%"></div><div class="mid"></div></div><span class="bn down">-15</span></div></div>
+<div class="cont">📅 履歴1日</div>
+</div></div>
+<p class="foot">💕 大口主導度＝案A（超大口＋大口の傾き）／単位M$ ／前日累計</p>
+</div></body></html>
