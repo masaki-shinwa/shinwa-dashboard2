@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>神話プレマーケット</title>
+<style>
+:root{--bg:#fbf7fb;--card:#fff;--line:#f6e3f0;--t1:#5a4a58;--t2:#9a8a98;--t3:#b8acb8;--accent:#e6a8d8;
+--up:#2fa86a;--down:#e06a8a;--track:#f4eef3;
+--s:#e0457a;--a:#e6843a;--b:#3a9a6a;--x:#b8acb8;
+--s-bg:#fde8f0;--a-bg:#fdf0e6;--b-bg:#eafaf2;--x-bg:#f3f0f3;
+--s-top:#f4a8c8;--a-top:#f5c89a;--b-top:#9fe3c4;--x-top:#e3d4e0;}
+@media(prefers-color-scheme:dark){:root{--bg:#15101a;--card:#241b2b;--line:#3d2f44;--t1:#f0e8f2;--t2:#a99cae;--t3:#6f6276;--accent:#e8a8d8;
+--up:#5cd99a;--down:#f08aa8;--track:#2a2232;
+--s:#f06a9a;--a:#f0a25a;--b:#5cd99a;--x:#6f6276;
+--s-bg:#3a1828;--a-bg:#3a2615;--b-bg:#16261d;--x-bg:#2a2232;
+--s-top:#6b2f4a;--a-top:#6b4520;--b-top:#2c6b4f;--x-top:#473a50;}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;padding:13px;}
+.wrap{max-width:1100px;margin:0 auto;}
+.head{display:flex;align-items:center;gap:7px;margin-bottom:12px;}
+.htitle{font-size:19px;font-weight:800;}
+.nav{font-size:11px;font-weight:700;color:#fff;background:var(--accent);border-radius:15px;padding:6px 12px;text-decoration:none;box-shadow:0 3px 8px rgba(230,168,216,.4);}
+.timecard{display:flex;align-items:center;gap:9px;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:8px 14px;margin-bottom:11px;font-size:12px;box-shadow:0 3px 12px rgba(220,180,220,.15);}
+.timecard .tk{font-size:11px;color:var(--t3);}
+.timecard .tj{font-weight:700;}
+.timecard .te{font-weight:700;color:var(--accent);margin-left:auto;}
+.tally{display:flex;gap:8px;margin-bottom:14px;}
+.tchip{flex:1;text-align:center;border-radius:14px;padding:8px 4px;font-size:12px;font-weight:800;border:1.5px solid var(--line);}
+.tchip .tn{font-size:20px;display:block;}
+.tchip.ts{background:var(--s-bg);color:var(--s);}
+.tchip.ta{background:var(--a-bg);color:var(--a);}
+.tchip.tb{background:var(--b-bg);color:var(--b);}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:12px 13px;box-shadow:0 4px 14px rgba(220,180,220,.18);border-top:5px solid var(--line);}
+.card.c-s{border-top-color:var(--s-top);}
+.card.c-a{border-top-color:var(--a-top);}
+.card.c-b{border-top-color:var(--b-top);}
+.card.c-x{border-top-color:var(--x-top);opacity:.65;}
+.ctop{display:flex;align-items:center;gap:5px;margin-bottom:8px;}
+.emoji{font-size:16px;}
+.tkr{font-size:16px;font-weight:800;}
+.rank{margin-left:auto;font-size:13px;font-weight:800;padding:2px 10px;border-radius:10px;}
+.rk-s{background:var(--s-bg);color:var(--s);}
+.rk-a{background:var(--a-bg);color:var(--a);}
+.rk-b{background:var(--b-bg);color:var(--b);}
+.rk-x{background:var(--x-bg);color:var(--x);}
+.prow{display:flex;align-items:baseline;gap:8px;margin-bottom:9px;}
+.rate{font-size:22px;font-weight:800;}
+.rate.up{color:var(--up);}
+.rate.down{color:var(--down);}
+.price{font-size:13px;color:var(--t2);font-weight:700;margin-left:auto;}
+.vrow{display:flex;align-items:center;gap:6px;}
+.vlab{font-size:9px;color:var(--t3);font-weight:700;width:48px;}
+.vtrack{flex:1;height:10px;background:var(--track);border-radius:5px;overflow:hidden;}
+.vbar{height:100%;border-radius:5px;}
+.vbar.c-s{background:var(--s);}
+.vbar.c-a{background:var(--a);}
+.vbar.c-b{background:var(--b);}
+.vbar.c-x{background:var(--x);}
+.vnum{font-size:10px;font-weight:800;color:var(--t2);width:56px;text-align:right;}
+.thin{font-size:9px;color:var(--a);margin-top:7px;font-weight:700;}
+.foot{text-align:center;font-size:10px;color:var(--t3);margin-top:12px;}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));}}
+</style></head>
+<body><div class="wrap">
+<div class="head"><span class="htitle">🌅 神話プレマーケット</span>
+<a class="nav" href="index.html" style="margin-left:auto;">🏠 司令塔</a>
+<a class="nav" href="live.html">⚡ ライブ</a>
+<a class="nav" href="shikin.html">💰 資金</a></div>
+<div class="timecard"><span class="tk">🕒 更新</span><span class="tj">06/25 20:41 JST</span><span class="te">06/25 07:41 EDT</span></div>
+<div class="tally">
+<div class="tchip ts">S<span class="tn">2</span>最優先</div>
+<div class="tchip ta">A<span class="tn">0</span>有力</div>
+<div class="tchip tb">B<span class="tn">11</span>通常</div>
+</div>
+<div class="grid">
+<div class="card c-s">
+<div class="ctop">
+<span class="emoji">💧</span>
+<span class="tkr">MU</span>
+<span class="rank rk-s">S</span>
+</div>
+<div class="prow">
+<span class="rate up">+17.4%</span>
+<span class="price">$1231.00</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-s" style="width:100%"></div></div>
+<span class="vnum">127.3万株</span>
+</div>
+
+</div>
+<div class="card c-s">
+<div class="ctop">
+<span class="emoji">📱</span>
+<span class="tkr">QCOM</span>
+<span class="rank rk-s">S</span>
+</div>
+<div class="prow">
+<span class="rate up">+10.5%</span>
+<span class="price">$218.18</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-s" style="width:18.0712094388793%"></div></div>
+<span class="vnum">23.0万株</span>
+</div>
+
+</div>
+<div class="card c-b">
+<div class="ctop">
+<span class="emoji">🏭</span>
+<span class="tkr">AMAT</span>
+<span class="rank rk-b">B</span>
+</div>
+<div class="prow">
+<span class="rate up">+6.9%</span>
+<span class="price">$629.50</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-b" style="width:2.1114481441279547%"></div></div>
+<span class="vnum">2.7万株</span>
+</div>
+
+</div>
+<div class="card c-b">
+<div class="ctop">
+<span class="emoji">🔧</span>
+<span class="tkr">LRCX</span>
+<span class="rank rk-b">B</span>
+</div>
+<div class="prow">
+<span class="rate up">+6.6%</span>
+<span class="price">$399.50</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-b" style="width:2.1376026742025225%"></div></div>
+<span class="vnum">2.7万株</span>
+</div>
+
+</div>
+<div class="card c-b">
+<div class="ctop">
+<span class="emoji">📦</span>
+<span class="tkr">AMKR</span>
+<span class="rank rk-b">B</span>
+</div>
+<div class="prow">
+<span class="rate up">+5.6%</span>
+<span class="price">$87.40</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-b" style="width:1.7452847230840038%"></div></div>
+<span class="vnum">2.2万株</span>
+</div>
+
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">🧪</span>
+<span class="tkr">TER</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+5.1%</span>
+<span class="price">$449.00</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:0.4655977606067223%"></div></div>
+<span class="vnum">5,928株</span>
+</div>
+<div class="thin">⚠️ 出来高薄＝気配のみ注意</div>
+</div>
+<div class="card c-b">
+<div class="ctop">
+<span class="emoji">🔵</span>
+<span class="tkr">INTC</span>
+<span class="rank rk-b">B</span>
+</div>
+<div class="prow">
+<span class="rate up">+4.9%</span>
+<span class="price">$138.04</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-b" style="width:63.23827640861387%"></div></div>
+<span class="vnum">80.5万株</span>
+</div>
+
+</div>
+<div class="card c-b">
+<div class="ctop">
+<span class="emoji">🔗</span>
+<span class="tkr">CRDO</span>
+<span class="rank rk-b">B</span>
+</div>
+<div class="prow">
+<span class="rate up">+4.8%</span>
+<span class="price">$282.00</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-b" style="width:2.2102541466318777%"></div></div>
+<span class="vnum">2.8万株</span>
+</div>
+
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">📻</span>
+<span class="tkr">QRVO</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+4.6%</span>
+<span class="price">$101.64</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:0.006911707647333259%"></div></div>
+<span class="vnum">88株</span>
+</div>
+<div class="thin">⚠️ 出来高薄＝気配のみ注意</div>
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">💎</span>
+<span class="tkr">ENTG</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+4.4%</span>
+<span class="price">$179.00</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:0.26767158706945166%"></div></div>
+<span class="vnum">3,408株</span>
+</div>
+<div class="thin">⚠️ 出来高薄＝気配のみ注意</div>
+</div>
+<div class="card c-b">
+<div class="ctop">
+<span class="emoji">🔬</span>
+<span class="tkr">KLAC</span>
+<span class="rank rk-b">B</span>
+</div>
+<div class="prow">
+<span class="rate up">+4.2%</span>
+<span class="price">$250.68</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-b" style="width:1.489001745206181%"></div></div>
+<span class="vnum">1.9万株</span>
+</div>
+
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">🔎</span>
+<span class="tkr">ONTO</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+4.0%</span>
+<span class="price">$335.06</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:0.18127524147778593%"></div></div>
+<span class="vnum">2,308株</span>
+</div>
+<div class="thin">⚠️ 出来高薄＝気配のみ注意</div>
+</div>
+<div class="card c-b">
+<div class="ctop">
+<span class="emoji">🍓</span>
+<span class="tkr">AMD</span>
+<span class="rank rk-b">B</span>
+</div>
+<div class="prow">
+<span class="rate up">+3.9%</span>
+<span class="price">$539.80</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-b" style="width:8.709144346301686%"></div></div>
+<span class="vnum">11.1万株</span>
+</div>
+
+</div>
+<div class="card c-b">
+<div class="ctop">
+<span class="emoji">🦋</span>
+<span class="tkr">MRVL</span>
+<span class="rank rk-b">B</span>
+</div>
+<div class="prow">
+<span class="rate up">+3.8%</span>
+<span class="price">$287.33</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-b" style="width:22.2882150672085%"></div></div>
+<span class="vnum">28.4万株</span>
+</div>
+
+</div>
+<div class="card c-b">
+<div class="ctop">
+<span class="emoji">🦄</span>
+<span class="tkr">ALAB</span>
+<span class="rank rk-b">B</span>
+</div>
+<div class="prow">
+<span class="rate up">+3.7%</span>
+<span class="price">$414.60</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-b" style="width:1.0174347825403982%"></div></div>
+<span class="vnum">1.3万株</span>
+</div>
+
+</div>
+<div class="card c-b">
+<div class="ctop">
+<span class="emoji">🔦</span>
+<span class="tkr">COHR</span>
+<span class="rank rk-b">B</span>
+</div>
+<div class="prow">
+<span class="rate up">+3.6%</span>
+<span class="price">$406.69</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-b" style="width:1.6033590899166041%"></div></div>
+<span class="vnum">2.0万株</span>
+</div>
+
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">🧩</span>
+<span class="tkr">LSCC</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+3.5%</span>
+<span class="price">$149.00</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:0.048224869266620694%"></div></div>
+<span class="vnum">614株</span>
+</div>
+<div class="thin">⚠️ 出来高薄＝気配のみ注意</div>
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">🌐</span>
+<span class="tkr">GFS</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+3.4%</span>
+<span class="price">$86.55</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:0.2876998308202469%"></div></div>
+<span class="vnum">3,663株</span>
+</div>
+<div class="thin">⚠️ 出来高薄＝気配のみ注意</div>
+</div>
+<div class="card c-b">
+<div class="ctop">
+<span class="emoji">🔋</span>
+<span class="tkr">ON</span>
+<span class="rank rk-b">B</span>
+</div>
+<div class="prow">
+<span class="rate up">+3.3%</span>
+<span class="price">$119.55</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-b" style="width:1.1045380073232685%"></div></div>
+<span class="vnum">1.4万株</span>
+</div>
+
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">⚡</span>
+<span class="tkr">MPWR</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+3.0%</span>
+<span class="price">$1478.60</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:0.06534705412024172%"></div></div>
+<span class="vnum">832株</span>
+</div>
+<div class="thin">⚠️ 出来高薄＝気配のみ注意</div>
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">🛰️</span>
+<span class="tkr">MTSI</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+2.9%</span>
+<span class="price">$384.00</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:0.1632105510358922%"></div></div>
+<span class="vnum">2,078株</span>
+</div>
+
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">🐤</span>
+<span class="tkr">MCHP</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+2.3%</span>
+<span class="price">$94.60</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:1.1212674815151091%"></div></div>
+<span class="vnum">1.4万株</span>
+</div>
+
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">📡</span>
+<span class="tkr">ADI</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+2.3%</span>
+<span class="price">$422.52</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:0.6740485798797049%"></div></div>
+<span class="vnum">8,582株</span>
+</div>
+
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">🤖</span>
+<span class="tkr">TXN</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+2.2%</span>
+<span class="price">$309.68</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:0.7174038369402499%"></div></div>
+<span class="vnum">9,134株</span>
+</div>
+
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">📶</span>
+<span class="tkr">SWKS</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+1.5%</span>
+<span class="price">$72.44</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:0.14718795603525597%"></div></div>
+<span class="vnum">1,874株</span>
+</div>
+
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">🐰</span>
+<span class="tkr">AVGO</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+1.1%</span>
+<span class="price">$386.20</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:10.412330486442842%"></div></div>
+<span class="vnum">13.3万株</span>
+</div>
+
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">🎧</span>
+<span class="tkr">CRUS</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+1.0%</span>
+<span class="price">$159.25</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:0.004869612206075706%"></div></div>
+<span class="vnum">62株</span>
+</div>
+
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">💚</span>
+<span class="tkr">NVDA</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate up">+0.8%</span>
+<span class="price">$200.51</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:58.0146748120094%"></div></div>
+<span class="vnum">73.9万株</span>
+</div>
+
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">🧠</span>
+<span class="tkr">SNPS</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate down">-0.4%</span>
+<span class="price">$462.25</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:0.0977849547832944%"></div></div>
+<span class="vnum">1,245株</span>
+</div>
+
+</div>
+<div class="card c-x">
+<div class="ctop">
+<span class="emoji">✏️</span>
+<span class="tkr">CDNS</span>
+<span class="rank rk-x">除外</span>
+</div>
+<div class="prow">
+<span class="rate down">-0.4%</span>
+<span class="price">$370.98</span>
+</div>
+<div class="vrow">
+<span class="vlab">プレ出来高</span>
+<div class="vtrack"><div class="vbar c-x" style="width:0.05552928757573425%"></div></div>
+<span class="vnum">707株</span>
+</div>
+
+</div></div>
+<p class="foot">🌅 プレ変化率順／S=+10%超&10万株 A=+5%&3万株 B=+3%&1万株／出来高は実需の裏付け</p>
+</div></body></html>
