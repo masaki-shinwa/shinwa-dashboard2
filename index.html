@@ -11,12 +11,14 @@
 --track:#f4eef3;--midline:#e0cede;--pos:#7fd4a8;--neg:#f095b0;
 --s:#2fa86a;--n:#9a8a98;--w:#d99a2e;--d:#e06a8a;
 --s-top:#9fe3c4;--n-top:#e3d4e0;--w-top:#f5d79a;--d-top:#f4b0c4;
---cup:#2fa86a;--cdown:#e06a8a;--cup-bg:#eefaf2;--cdown-bg:#fdf0f4;}
+--cup:#2fa86a;--cdown:#e06a8a;--cup-bg:#eefaf2;--cdown-bg:#fdf0f4;
+--here-bg:#ffe8f4;--here-t:#d6489a;}
 @media(prefers-color-scheme:dark){:root{--bg:#15101a;--card:#241b2b;--line:#3d2f44;--t1:#f0e8f2;--t2:#a99cae;--t3:#6f6276;--accent:#e8a8d8;
 --track:#2a2232;--midline:#473a50;--pos:#5cc99a;--neg:#e88aa6;
 --s:#5cd99a;--n:#a99cae;--w:#f0c878;--d:#f08aa8;
 --s-top:#2c6b4f;--n-top:#473a50;--w-top:#6b5320;--d-top:#6b2f42;
---cup:#5cd99a;--cdown:#f08aa8;--cup-bg:#16261d;--cdown-bg:#2a181f;}}
+--cup:#5cd99a;--cdown:#f08aa8;--cup-bg:#16261d;--cdown-bg:#2a181f;
+--here-bg:#3a1f30;--here-t:#f0a8d0;}}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;padding:13px;}
 .wrap{max-width:1100px;margin:0 auto;}
@@ -27,7 +29,8 @@ body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,Bli
 .timecard .tk{font-size:11px;color:var(--t3);}
 .timecard .tj{font-weight:700;}
 .timecard .te{font-weight:700;color:var(--accent);margin-left:auto;}
-.lead{font-size:12px;color:var(--t2);margin-bottom:13px;font-weight:600;}
+.lead{font-size:12px;color:var(--t2);margin-bottom:6px;font-weight:600;}
+.cycle{font-size:11px;color:var(--t3);margin-bottom:13px;line-height:1.6;}
 .grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:11px;}
 .card{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:13px 15px;box-shadow:0 4px 14px rgba(220,180,220,.18);border-top:5px solid var(--line);}
 .card.c-s{border-top-color:var(--s-top);}
@@ -35,10 +38,12 @@ body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,Bli
 .card.c-w{border-top-color:var(--w-top);}
 .card.c-d{border-top-color:var(--d-top);}
 .card.c-ng{opacity:.5;}
-.ctop{display:flex;align-items:center;gap:7px;margin-bottom:3px;}
+.ctop{display:flex;align-items:center;gap:7px;margin-bottom:2px;}
 .emoji{font-size:18px;}
 .sec{font-size:16px;font-weight:800;}
+.here{font-size:10px;font-weight:800;color:var(--here-t);background:var(--here-bg);padding:2px 7px;border-radius:8px;margin-left:4px;}
 .score{font-size:18px;font-weight:800;margin-left:auto;}
+.role{font-size:10px;color:var(--t3);font-weight:700;margin-bottom:6px;}
 .lab{font-size:12px;font-weight:700;margin-bottom:8px;}
 .c-s{color:var(--s);}.c-n{color:var(--n);}.c-w{color:var(--w);}.c-d{color:var(--d);}
 .track{height:14px;background:var(--track);border-radius:7px;position:relative;overflow:hidden;margin-bottom:9px;}
@@ -58,58 +63,20 @@ body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,Bli
 <a class="nav" href="pre.html" style="margin-left:auto;">🌅 プレ</a>
 <a class="nav" href="live.html">⚡ ライブ</a>
 <a class="nav" href="shikin.html">💰 資金</a></div>
-<div class="timecard"><span class="tk">🕒 更新</span><span class="tj">06/26 20:45 JST</span><span class="te">06/26 07:45 EDT</span></div>
-<div class="lead">市場全体・大口がどのセクターへ向かっているか（流入が強い順）</div>
+<div class="timecard"><span class="tk">🕒 更新</span><span class="tj">06/26 20:53 JST</span><span class="te">06/26 07:53 EDT</span></div>
+<div class="lead">サイクル順に固定表示。📍今ここ＝最も大口が入っているセクター。</div>
+<div class="cycle">①半導体→②情報→③ソフト→④消費電子→⑦EC→⑥防衛→⑤銀行（末端）。⑤に回り切ったら一周＝①②の底が近い。</div>
 <div class="grid">
-<div class="card c-s">
-<div class="ctop">
-<span class="emoji">🚀</span>
-<span class="sec">⑥宇宙・防衛</span>
-<span class="score c-s">+22.6%</span>
-</div>
-<div class="lab c-s">🟢 大口流入</div>
-<div class="track"><div class="seg pos" style="width:50%"></div><div class="mid"></div></div>
-<div class="chips"><span class="chip cup">RTX +51</span><span class="chip cup">LMT +11</span><span class="chip cup">RKLB +6</span></div>
-</div>
-<div class="card c-n">
-<div class="ctop">
-<span class="emoji">📱</span>
-<span class="sec">④消費電子</span>
-<span class="score c-n">-0.6%</span>
-</div>
-<div class="lab c-n">⚪ 中立</div>
-<div class="track"><div class="seg neg" style="width:1.3421875240898173%"></div><div class="mid"></div></div>
-<div class="chips"><span class="chip cup">SONY +19</span><span class="chip cup">TSLA +3</span><span class="chip cdown">AAPL -23</span></div>
-</div>
 <div class="card c-n">
 <div class="ctop">
 <span class="emoji">🔲</span>
 <span class="sec">①半導体</span>
 <span class="score c-n">-0.9%</span>
 </div>
+<div class="role">攻め・先頭打者</div>
 <div class="lab c-n">⚪ 中立</div>
 <div class="track"><div class="seg neg" style="width:1.8847742022775789%"></div><div class="mid"></div></div>
 <div class="chips"><span class="chip cup">🤖 TXN +41</span><span class="chip cup">🧪 TER +36</span><span class="chip cup">🌐 GFS +24</span><span class="chip cup">⚡ MPWR +20</span><span class="chip cup">📦 AMKR +19</span><span class="chip cup">🛰️ MTSI +14</span><span class="chip cup">🔬 KLAC +13</span><span class="chip cup">🍓 AMD +12</span><span class="chip cup">🔎 ONTO +11</span><span class="chip cup">💎 ENTG +10</span><span class="chip cup">📶 SWKS +9</span><span class="chip cup">🏭 AMAT +8</span><span class="chip cup">🧠 SNPS +7</span><span class="chip cdown">🔵 INTC -1</span><span class="chip cdown">🔋 ON -1</span><span class="chip cdown">🧩 LSCC -4</span><span class="chip cdown">🐤 MCHP -4</span><span class="chip cdown">💧 MU -4</span><span class="chip cdown">🔧 LRCX -5</span><span class="chip cdown">🔗 CRDO -5</span><span class="chip cdown">🦋 MRVL -6</span><span class="chip cdown">🎧 CRUS -8</span><span class="chip cdown">💚 NVDA -9</span><span class="chip cdown">📱 QCOM -9</span><span class="chip cdown">🔦 COHR -10</span><span class="chip cdown">🦄 ALAB -10</span><span class="chip cdown">📡 ADI -14</span><span class="chip cdown">🐰 AVGO -20</span><span class="chip cdown">✏️ CDNS -69</span><span class="chip cdown">📻 QRVO -70</span></div>
-</div>
-<div class="card c-w">
-<div class="ctop">
-<span class="emoji">💻</span>
-<span class="sec">③ソフトウェア</span>
-<span class="score c-w">-2.4%</span>
-</div>
-<div class="lab c-w">⚠️ やや流出</div>
-<div class="track"><div class="seg neg" style="width:5.4199432610968366%"></div><div class="mid"></div></div>
-<div class="chips"><span class="chip cup">DDOG +22</span><span class="chip cdown">PANW -14</span><span class="chip cdown">MSFT -16</span></div>
-</div>
-<div class="card c-w">
-<div class="ctop">
-<span class="emoji">🏦</span>
-<span class="sec">⑤銀行</span>
-<span class="score c-w">-3.1%</span>
-</div>
-<div class="lab c-w">⚠️ やや流出</div>
-<div class="track"><div class="seg neg" style="width:6.788148050999589%"></div><div class="mid"></div></div>
-<div class="chips"><span class="chip cup">JPM +20</span><span class="chip cup">BAC +6</span><span class="chip cdown">GS -35</span></div>
 </div>
 <div class="card c-w">
 <div class="ctop">
@@ -117,19 +84,32 @@ body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,Bli
 <span class="sec">②情報サービス</span>
 <span class="score c-w">-6.1%</span>
 </div>
+<div class="role">攻め・第2陣</div>
 <div class="lab c-w">⚠️ やや流出</div>
 <div class="track"><div class="seg neg" style="width:13.515490480116457%"></div><div class="mid"></div></div>
 <div class="chips"><span class="chip cup">V +17</span><span class="chip cup">GOOGL +14</span><span class="chip cdown">META -13</span><span class="chip cdown">NFLX -15</span><span class="chip cdown">MA -33</span></div>
 </div>
 <div class="card c-w">
 <div class="ctop">
-<span class="emoji">🛡️</span>
-<span class="sec">⑧純ディフェンシブ</span>
-<span class="score c-w">-6.2%</span>
+<span class="emoji">💻</span>
+<span class="sec">③ソフトウェア</span>
+<span class="score c-w">-2.4%</span>
 </div>
+<div class="role">中盤・物色拡大</div>
 <div class="lab c-w">⚠️ やや流出</div>
-<div class="track"><div class="seg neg" style="width:13.669164977445746%"></div><div class="mid"></div></div>
-<div class="chips"><span class="chip cup">KO +19</span><span class="chip cup">UNH +6</span><span class="chip cdown">PG -12</span><span class="chip cdown">JNJ -22</span><span class="chip cdown">LLY -22</span></div>
+<div class="track"><div class="seg neg" style="width:5.4199432610968366%"></div><div class="mid"></div></div>
+<div class="chips"><span class="chip cup">DDOG +22</span><span class="chip cdown">PANW -14</span><span class="chip cdown">MSFT -16</span></div>
+</div>
+<div class="card c-n">
+<div class="ctop">
+<span class="emoji">📱</span>
+<span class="sec">④消費電子</span>
+<span class="score c-n">-0.6%</span>
+</div>
+<div class="role">中盤・川下</div>
+<div class="lab c-n">⚪ 中立</div>
+<div class="track"><div class="seg neg" style="width:1.3421875240898173%"></div><div class="mid"></div></div>
+<div class="chips"><span class="chip cup">SONY +19</span><span class="chip cup">TSLA +3</span><span class="chip cdown">AAPL -23</span></div>
 </div>
 <div class="card c-d">
 <div class="ctop">
@@ -137,9 +117,43 @@ body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,Bli
 <span class="sec">⑦Eコマース</span>
 <span class="score c-d">-16.9%</span>
 </div>
+<div class="role">中盤・景気敏感</div>
 <div class="lab c-d">🔻 大口流出</div>
 <div class="track"><div class="seg neg" style="width:37.43429294931955%"></div><div class="mid"></div></div>
 <div class="chips"><span class="chip cdown">AMZN -3</span><span class="chip cdown">SHOP -8</span><span class="chip cdown">MELI -40</span></div>
+</div>
+<div class="card c-s">
+<div class="ctop">
+<span class="emoji">🚀</span>
+<span class="sec">⑥宇宙・防衛 <span class="here">📍今ここ</span></span>
+<span class="score c-s">+22.6%</span>
+</div>
+<div class="role">終盤・防御へ</div>
+<div class="lab c-s">🟢 大口流入</div>
+<div class="track"><div class="seg pos" style="width:50%"></div><div class="mid"></div></div>
+<div class="chips"><span class="chip cup">RTX +51</span><span class="chip cup">LMT +11</span><span class="chip cup">RKLB +6</span></div>
+</div>
+<div class="card c-w">
+<div class="ctop">
+<span class="emoji">🏦</span>
+<span class="sec">⑤銀行</span>
+<span class="score c-w">-3.1%</span>
+</div>
+<div class="role">末端・回り切り⇒底近い</div>
+<div class="lab c-w">⚠️ やや流出</div>
+<div class="track"><div class="seg neg" style="width:6.788148050999589%"></div><div class="mid"></div></div>
+<div class="chips"><span class="chip cup">JPM +20</span><span class="chip cup">BAC +6</span><span class="chip cdown">GS -35</span></div>
+</div>
+<div class="card c-w">
+<div class="ctop">
+<span class="emoji">🛡️</span>
+<span class="sec">⑧純ディフェンシブ</span>
+<span class="score c-w">-6.2%</span>
+</div>
+<div class="role">逃避先・参考</div>
+<div class="lab c-w">⚠️ やや流出</div>
+<div class="track"><div class="seg neg" style="width:13.669164977445746%"></div><div class="mid"></div></div>
+<div class="chips"><span class="chip cup">KO +19</span><span class="chip cup">UNH +6</span><span class="chip cdown">PG -12</span><span class="chip cdown">JNJ -22</span><span class="chip cdown">LLY -22</span></div>
 </div></div>
-<p class="foot">💕 セクタースコア＝構成銘柄の大口主導度(案A)の平均／チップ＝各銘柄の主導度%／単位%</p>
+<p class="foot">💕 スコア＝構成銘柄の大口主導度(案A)の平均／チップ＝各銘柄の主導度%／単位%</p>
 </div></body></html>
