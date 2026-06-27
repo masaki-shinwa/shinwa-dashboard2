@@ -11,13 +11,15 @@
 --track:#f4eef3;--midline:#e0cede;--pos:#7fd4a8;--neg:#f095b0;
 --s:#2fa86a;--n:#9a8a98;--w:#d99a2e;--d:#e06a8a;
 --s-top:#9fe3c4;--n-top:#e3d4e0;--w-top:#f5d79a;--d-top:#f4b0c4;
---cup:#2fa86a;--cdown:#e06a8a;--cup-bg:#eefaf2;--cdown-bg:#fdf0f4;
+--up:#2fa86a;--down:#e06a8a;--up-bg:#eefaf2;--down-bg:#fdf0f4;
+--chip-bg:#faf4f9;--chip-line:#f0e0ec;
 --here-bg:#ffe3f1;--here-t:#d6489a;--here-border:#f06aae;--here-card-bg:#fff5fb;}
 @media(prefers-color-scheme:dark){:root{--bg:#15101a;--card:#241b2b;--line:#3d2f44;--t1:#f0e8f2;--t2:#a99cae;--t3:#6f6276;--accent:#e8a8d8;
 --track:#2a2232;--midline:#473a50;--pos:#5cc99a;--neg:#e88aa6;
 --s:#5cd99a;--n:#a99cae;--w:#f0c878;--d:#f08aa8;
 --s-top:#2c6b4f;--n-top:#473a50;--w-top:#6b5320;--d-top:#6b2f42;
---cup:#5cd99a;--cdown:#f08aa8;--cup-bg:#16261d;--cdown-bg:#2a181f;
+--up:#5cd99a;--down:#f08aa8;--up-bg:#16261d;--down-bg:#2a181f;
+--chip-bg:#2a2232;--chip-line:#3d2f44;
 --here-bg:#4a2540;--here-t:#ffb0db;--here-border:#e86ab4;--here-card-bg:#2e1c2a;}}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;padding:13px;}
@@ -52,116 +54,118 @@ body{margin:0;background:var(--bg);color:var(--t1);font-family:-apple-system,Bli
 .seg{position:absolute;top:0;height:100%;}
 .seg.pos{left:50%;background:var(--pos);border-radius:0 6px 6px 0;}
 .seg.neg{right:50%;background:var(--neg);border-radius:6px 0 0 6px;}
-.chips{display:flex;flex-wrap:wrap;gap:5px;}
-.chip{font-size:10px;font-weight:700;padding:3px 7px;border-radius:9px;}
-.chip.cup{color:var(--cup);background:var(--cup-bg);}
-.chip.cdown{color:var(--cdown);background:var(--cdown-bg);}
-.foot{text-align:center;font-size:10px;color:var(--t3);margin-top:14px;}
+.chips{display:flex;flex-direction:column;gap:5px;}
+.chip{display:flex;align-items:center;gap:6px;background:var(--chip-bg);border:1px solid var(--chip-line);border-radius:10px;padding:5px 9px;font-size:11px;font-weight:700;}
+.chip .tkr{min-width:62px;color:var(--t1);}
+.chip .lv{font-size:11px;font-weight:800;padding:1px 5px;border-radius:6px;}
+.chip .lv.up{color:var(--up);background:var(--up-bg);}
+.chip .lv.down{color:var(--down);background:var(--down-bg);}
+.foot{text-align:center;font-size:10px;color:var(--t3);margin-top:14px;line-height:1.7;}
 </style></head>
 <body><div class="wrap">
 <div class="head"><span class="htitle">🧭 神話 司令塔</span>
 <a class="nav" href="pre.html" style="margin-left:auto;">🌅 プレ</a>
 <a class="nav" href="live.html">⚡ ライブ</a>
 <a class="nav" href="shikin.html">💰 資金</a></div>
-<div class="timecard"><span class="tk">🕒 更新</span><span class="tj">06/27 05:44 JST</span><span class="te">06/26 16:44 EDT</span></div>
+<div class="timecard"><span class="tk">🕒 更新</span><span class="tj">06/27 11:23 JST</span><span class="te">06/26 22:23 EDT</span></div>
 <div class="lead">サイクル順に固定表示。📍いま大口はここ＝最も大口が入っているセクター。</div>
-<div class="cycle">①半導体→②情報→③ソフト→④消費電子→⑦EC→⑥防衛→⑤銀行（末端）。⑤に回り切ったら一周＝①②の底が近い。</div>
+<div class="cycle">①半導体→②情報→③ソフト→④消費電子→⑦EC→⑥防衛→⑤銀行（末端）。⑤に回り切ったら一周＝①②の底が近い。各銘柄は大=大口／中=中口／小=小口のネット％。</div>
 <div class="grid">
-<div class="card c-w">
+<div class="card c-n">
 <div class="ctop">
 <span class="emoji">🔲</span>
 <span class="sec">①半導体</span>
 
-<span class="score c-w">-3.1%</span>
+<span class="score c-n">-1.0%</span>
 </div>
 <div class="role">攻め・先頭打者</div>
-<div class="lab c-w">⚠️ やや流出</div>
-<div class="track"><div class="seg neg" style="width:7.82249418144033%"></div><div class="mid"></div></div>
-<div class="chips"><span class="chip cup">🧩 LSCC +53</span><span class="chip cup">🧪 TER +42</span><span class="chip cup">✏️ CDNS +26</span><span class="chip cup">🤖 TXN +23</span><span class="chip cup">🦄 ALAB +19</span><span class="chip cup">💎 ENTG +18</span><span class="chip cup">📶 SWKS +8</span><span class="chip cup">🍓 AMD +7</span><span class="chip cup">🔋 ON +5</span><span class="chip cup">🐰 AVGO +5</span><span class="chip cup">🐤 MCHP +3</span><span class="chip cdown">🔦 COHR -0</span><span class="chip cdown">🛰️ MTSI -3</span><span class="chip cdown">🔵 INTC -6</span><span class="chip cdown">💚 NVDA -8</span><span class="chip cdown">🧠 SNPS -8</span><span class="chip cdown">📱 QCOM -8</span><span class="chip cdown">💧 MU -9</span><span class="chip cdown">🔧 LRCX -9</span><span class="chip cdown">🦋 MRVL -9</span><span class="chip cdown">📡 ADI -9</span><span class="chip cdown">🔗 CRDO -10</span><span class="chip cdown">🏭 AMAT -11</span><span class="chip cdown">📻 QRVO -19</span><span class="chip cdown">🌐 GFS -22</span><span class="chip cdown">⚡ MPWR -24</span><span class="chip cdown">🎧 CRUS -31</span><span class="chip cdown">🔎 ONTO -35</span><span class="chip cdown">📦 AMKR -41</span><span class="chip cdown">🔬 KLAC -41</span></div>
+<div class="lab c-n">⚪ 中立</div>
+<div class="track"><div class="seg neg" style="width:8.959521995162302%"></div><div class="mid"></div></div>
+<div class="chips"><div class="chip"><span class="tkr">🧩 LSCC</span><span class="lv up">大+16</span><span class="lv up">中+14</span><span class="lv up">小+8</span></div><div class="chip"><span class="tkr">🧪 TER</span><span class="lv up">大+13</span><span class="lv up">中+2</span><span class="lv up">小+8</span></div><div class="chip"><span class="tkr">🤖 TXN</span><span class="lv up">大+10</span><span class="lv up">中+8</span><span class="lv up">小+3</span></div><div class="chip"><span class="tkr">💎 ENTG</span><span class="lv up">大+6</span><span class="lv up">中+7</span><span class="lv up">小+2</span></div><div class="chip"><span class="tkr">✏️ CDNS</span><span class="lv up">大+5</span><span class="lv up">中+4</span><span class="lv up">小+2</span></div><div class="chip"><span class="tkr">🦄 ALAB</span><span class="lv up">大+4</span><span class="lv up">中+1</span><span class="lv up">小+0</span></div><div class="chip"><span class="tkr">📶 SWKS</span><span class="lv up">大+3</span><span class="lv down">中-0</span><span class="lv up">小+1</span></div><div class="chip"><span class="tkr">🔋 ON</span><span class="lv up">大+2</span><span class="lv up">中+10</span><span class="lv up">小+5</span></div><div class="chip"><span class="tkr">🍓 AMD</span><span class="lv up">大+1</span><span class="lv down">中-1</span><span class="lv up">小+5</span></div><div class="chip"><span class="tkr">🐰 AVGO</span><span class="lv up">大+1</span><span class="lv up">中+0</span><span class="lv up">小+7</span></div><div class="chip"><span class="tkr">🐤 MCHP</span><span class="lv up">大+1</span><span class="lv down">中-2</span><span class="lv up">小+1</span></div><div class="chip"><span class="tkr">🔦 COHR</span><span class="lv down">大-0</span><span class="lv down">中-2</span><span class="lv up">小+3</span></div><div class="chip"><span class="tkr">🔵 INTC</span><span class="lv down">大-1</span><span class="lv down">中-1</span><span class="lv up">小+4</span></div><div class="chip"><span class="tkr">🛰️ MTSI</span><span class="lv down">大-1</span><span class="lv down">中-10</span><span class="lv down">小-11</span></div><div class="chip"><span class="tkr">💧 MU</span><span class="lv down">大-2</span><span class="lv up">中+0</span><span class="lv up">小+4</span></div><div class="chip"><span class="tkr">💚 NVDA</span><span class="lv down">大-2</span><span class="lv down">中-0</span><span class="lv up">小+0</span></div><div class="chip"><span class="tkr">🧠 SNPS</span><span class="lv down">大-2</span><span class="lv up">中+1</span><span class="lv up">小+8</span></div><div class="chip"><span class="tkr">🦋 MRVL</span><span class="lv down">大-3</span><span class="lv down">中-2</span><span class="lv up">小+3</span></div><div class="chip"><span class="tkr">📱 QCOM</span><span class="lv down">大-3</span><span class="lv up">中+1</span><span class="lv up">小+9</span></div><div class="chip"><span class="tkr">🔗 CRDO</span><span class="lv down">大-3</span><span class="lv up">中+0</span><span class="lv up">小+0</span></div><div class="chip"><span class="tkr">📡 ADI</span><span class="lv down">大-3</span><span class="lv up">中+1</span><span class="lv up">小+11</span></div><div class="chip"><span class="tkr">🔧 LRCX</span><span class="lv down">大-3</span><span class="lv up">中+2</span><span class="lv up">小+2</span></div><div class="chip"><span class="tkr">🏭 AMAT</span><span class="lv down">大-4</span><span class="lv up">中+0</span><span class="lv down">小-0</span></div><div class="chip"><span class="tkr">📻 QRVO</span><span class="lv down">大-4</span><span class="lv up">中+2</span><span class="lv up">小+4</span></div><div class="chip"><span class="tkr">🔬 KLAC</span><span class="lv down">大-5</span><span class="lv down">中-1</span><span class="lv up">小+6</span></div><div class="chip"><span class="tkr">🌐 GFS</span><span class="lv down">大-7</span><span class="lv down">中-3</span><span class="lv down">小-5</span></div><div class="chip"><span class="tkr">⚡ MPWR</span><span class="lv down">大-9</span><span class="lv up">中+0</span><span class="lv up">小+8</span></div><div class="chip"><span class="tkr">🎧 CRUS</span><span class="lv down">大-10</span><span class="lv down">中-5</span><span class="lv down">小-3</span></div><div class="chip"><span class="tkr">🔎 ONTO</span><span class="lv down">大-13</span><span class="lv down">中-4</span><span class="lv down">小-3</span></div><div class="chip"><span class="tkr">📦 AMKR</span><span class="lv down">大-18</span><span class="lv down">中-2</span><span class="lv down">小-8</span></div></div>
 </div>
-<div class="card c-d">
+<div class="card c-w">
 <div class="ctop">
 <span class="emoji">🌐</span>
 <span class="sec">②情報サービス</span>
 
-<span class="score c-d">-15.6%</span>
+<span class="score c-w">-4.0%</span>
 </div>
 <div class="role">攻め・第2陣</div>
-<div class="lab c-d">🔻 大口流出</div>
-<div class="track"><div class="seg neg" style="width:39.870421519542624%"></div><div class="mid"></div></div>
-<div class="chips"><span class="chip cdown">META -1</span><span class="chip cdown">V -12</span><span class="chip cdown">NFLX -16</span><span class="chip cdown">GOOGL -24</span><span class="chip cdown">MA -25</span></div>
+<div class="lab c-w">⚠️ やや流出</div>
+<div class="track"><div class="seg neg" style="width:35.708611895847206%"></div><div class="mid"></div></div>
+<div class="chips"><div class="chip"><span class="tkr">META</span><span class="lv down">大-0</span><span class="lv up">中+1</span><span class="lv up">小+1</span></div><div class="chip"><span class="tkr">V</span><span class="lv down">大-2</span><span class="lv down">中-4</span><span class="lv down">小-13</span></div><div class="chip"><span class="tkr">NFLX</span><span class="lv down">大-5</span><span class="lv down">中-0</span><span class="lv down">小-1</span></div><div class="chip"><span class="tkr">MA</span><span class="lv down">大-6</span><span class="lv down">中-7</span><span class="lv down">小-5</span></div><div class="chip"><span class="tkr">GOOGL</span><span class="lv down">大-7</span><span class="lv down">中-2</span><span class="lv up">小+2</span></div></div>
 </div>
 <div class="card c-n">
 <div class="ctop">
 <span class="emoji">💻</span>
 <span class="sec">③ソフトウェア</span>
 
-<span class="score c-n">+0.5%</span>
+<span class="score c-n">+0.4%</span>
 </div>
 <div class="role">中盤・物色拡大</div>
 <div class="lab c-n">⚪ 中立</div>
-<div class="track"><div class="seg pos" style="width:1.2548853795581416%"></div><div class="mid"></div></div>
-<div class="chips"><span class="chip cup">PANW +43</span><span class="chip cdown">DDOG -10</span><span class="chip cdown">MSFT -31</span></div>
+<div class="track"><div class="seg pos" style="width:3.098697352000638%"></div><div class="mid"></div></div>
+<div class="chips"><div class="chip"><span class="tkr">PANW</span><span class="lv up">大+15</span><span class="lv up">中+8</span><span class="lv up">小+12</span></div><div class="chip"><span class="tkr">DDOG</span><span class="lv down">大-4</span><span class="lv down">中-8</span><span class="lv down">小-6</span></div><div class="chip"><span class="tkr">MSFT</span><span class="lv down">大-11</span><span class="lv down">中-2</span><span class="lv up">小+1</span></div></div>
 </div>
-<div class="card c-d">
+<div class="card c-w">
 <div class="ctop">
 <span class="emoji">📱</span>
 <span class="sec">④消費電子</span>
 
-<span class="score c-d">-16.9%</span>
+<span class="score c-w">-5.7%</span>
 </div>
 <div class="role">中盤・川下</div>
-<div class="lab c-d">🔻 大口流出</div>
-<div class="track"><div class="seg neg" style="width:43.179847693895404%"></div><div class="mid"></div></div>
-<div class="chips"><span class="chip cdown">TSLA -2</span><span class="chip cdown">SONY -11</span><span class="chip cdown">AAPL -38</span></div>
+<div class="lab c-w">⚠️ やや流出</div>
+<div class="track"><div class="seg neg" style="width:50%"></div><div class="mid"></div></div>
+<div class="chips"><div class="chip"><span class="tkr">TSLA</span><span class="lv down">大-0</span><span class="lv up">中+1</span><span class="lv down">小-1</span></div><div class="chip"><span class="tkr">SONY</span><span class="lv down">大-3</span><span class="lv up">中+0</span><span class="lv down">小-0</span></div><div class="chip"><span class="tkr">AAPL</span><span class="lv down">大-13</span><span class="lv down">中-0</span><span class="lv down">小-0</span></div></div>
 </div>
-<div class="card c-s here-card">
+<div class="card c-n here-card">
 <div class="ctop">
 <span class="emoji">📦</span>
 <span class="sec">⑦Eコマース</span>
 <span class="here">📍 いま大口はここ</span>
-<span class="score c-s">+19.6%</span>
+<span class="score c-n">+5.5%</span>
 </div>
 <div class="role">中盤・景気敏感</div>
-<div class="lab c-s">🟢 大口流入</div>
-<div class="track"><div class="seg pos" style="width:50%"></div><div class="mid"></div></div>
-<div class="chips"><span class="chip cup">SHOP +23</span><span class="chip cup">MELI +21</span><span class="chip cup">AMZN +15</span></div>
+<div class="lab c-n">🌱 やや流入</div>
+<div class="track"><div class="seg pos" style="width:48.65305764675308%"></div><div class="mid"></div></div>
+<div class="chips"><div class="chip"><span class="tkr">MELI</span><span class="lv up">大+6</span><span class="lv up">中+1</span><span class="lv up">小+6</span></div><div class="chip"><span class="tkr">SHOP</span><span class="lv up">大+6</span><span class="lv up">中+2</span><span class="lv down">小-1</span></div><div class="chip"><span class="tkr">AMZN</span><span class="lv up">大+5</span><span class="lv up">中+2</span><span class="lv up">小+7</span></div></div>
 </div>
-<div class="card c-d">
+<div class="card c-w">
 <div class="ctop">
 <span class="emoji">🚀</span>
 <span class="sec">⑥宇宙・防衛</span>
 
-<span class="score c-d">-13.3%</span>
+<span class="score c-w">-2.8%</span>
 </div>
 <div class="role">終盤・防御へ</div>
-<div class="lab c-d">🔻 大口流出</div>
-<div class="track"><div class="seg neg" style="width:33.863605077876855%"></div><div class="mid"></div></div>
-<div class="chips"><span class="chip cdown">LMT -4</span><span class="chip cdown">RKLB -17</span><span class="chip cdown">RTX -19</span></div>
+<div class="lab c-w">⚠️ やや流出</div>
+<div class="track"><div class="seg neg" style="width:24.537743412755518%"></div><div class="mid"></div></div>
+<div class="chips"><div class="chip"><span class="tkr">LMT</span><span class="lv down">大-1</span><span class="lv up">中+3</span><span class="lv down">小-4</span></div><div class="chip"><span class="tkr">RKLB</span><span class="lv down">大-3</span><span class="lv up">中+1</span><span class="lv down">小-3</span></div><div class="chip"><span class="tkr">RTX</span><span class="lv down">大-4</span><span class="lv down">中-2</span><span class="lv down">小-17</span></div></div>
 </div>
 <div class="card c-n">
 <div class="ctop">
 <span class="emoji">🏦</span>
 <span class="sec">⑤銀行</span>
 
-<span class="score c-n">-1.3%</span>
+<span class="score c-n">+0.2%</span>
 </div>
 <div class="role">末端・回り切り⇒底近い</div>
 <div class="lab c-n">⚪ 中立</div>
-<div class="track"><div class="seg neg" style="width:3.214162347267412%"></div><div class="mid"></div></div>
-<div class="chips"><span class="chip cup">BAC +13</span><span class="chip cup">JPM +3</span><span class="chip cdown">GS -20</span></div>
+<div class="track"><div class="seg pos" style="width:1.4769340649706313%"></div><div class="mid"></div></div>
+<div class="chips"><div class="chip"><span class="tkr">BAC</span><span class="lv up">大+3</span><span class="lv up">中+2</span><span class="lv up">小+2</span></div><div class="chip"><span class="tkr">JPM</span><span class="lv up">大+1</span><span class="lv up">中+1</span><span class="lv up">小+6</span></div><div class="chip"><span class="tkr">GS</span><span class="lv down">大-3</span><span class="lv up">中+0</span><span class="lv down">小-2</span></div></div>
 </div>
 <div class="card c-n">
 <div class="ctop">
 <span class="emoji">🛡️</span>
 <span class="sec">⑧純ディフェンシブ</span>
 
-<span class="score c-n">+2.4%</span>
+<span class="score c-n">+0.6%</span>
 </div>
 <div class="role">逃避先・参考</div>
-<div class="lab c-n">🌱 やや流入</div>
-<div class="track"><div class="seg pos" style="width:6.167754174047543%"></div><div class="mid"></div></div>
-<div class="chips"><span class="chip cup">UNH +13</span><span class="chip cup">LLY +12</span><span class="chip cup">PG +0</span><span class="chip cdown">JNJ -3</span><span class="chip cdown">KO -10</span></div>
+<div class="lab c-n">⚪ 中立</div>
+<div class="track"><div class="seg pos" style="width:5.3579453868983995%"></div><div class="mid"></div></div>
+<div class="chips"><div class="chip"><span class="tkr">UNH</span><span class="lv up">大+3</span><span class="lv up">中+1</span><span class="lv down">小-4</span></div><div class="chip"><span class="tkr">LLY</span><span class="lv up">大+3</span><span class="lv up">中+7</span><span class="lv up">小+10</span></div><div class="chip"><span class="tkr">PG</span><span class="lv up">大+0</span><span class="lv up">中+6</span><span class="lv up">小+4</span></div><div class="chip"><span class="tkr">JNJ</span><span class="lv down">大-1</span><span class="lv down">中-2</span><span class="lv down">小-2</span></div><div class="chip"><span class="tkr">KO</span><span class="lv down">大-1</span><span class="lv up">中+1</span><span class="lv up">小+4</span></div></div>
 </div></div>
-<p class="foot">💕 スコア＝構成銘柄の大口主導度(案A)の平均／チップ＝各銘柄の主導度%／単位%</p>
+<p class="foot">💕 セクタースコア＝構成銘柄の大口主導度の平均／各銘柄の大中小＝その階層のネット％（同じ総フローで割った値）／単位%</p>
 </div></body></html>
