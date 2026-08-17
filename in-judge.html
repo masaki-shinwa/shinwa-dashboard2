@@ -1,137 +1,86 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>神話 執行判定（IN判断）</title>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>執行判定（IN判断）</title>
 <style>
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
-  background: #0d0d0d;
-  color: #eee;
-  padding: 16px;
-  margin: 0;
-}
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.header h1 {
-  font-size: 18px;
-  font-weight: 500;
-  margin: 0;
-}
-.header .updated {
-  font-size: 12px;
-  color: #888;
-}
-.nav {
-  display: block;
-  margin-bottom: 16px;
-  font-size: 13px;
-}
-.nav a {
-  color: #4ade80;
-  text-decoration: none;
-  margin-right: 12px;
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-}
-.card {
-  background: #1a1a1a;
-  border-radius: 12px;
-  padding: 14px;
-  border: 1px solid #2a2a2a;
-}
-.card.rank-s { border: 2px solid #e24b4a; }
-.card.rank-a { border: 2px solid #ba7517; }
-.card.rank-b { border: 1px solid #444441; }
-.card-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 6px;
-}
-.ticker {
-  font-weight: 500;
-  font-size: 14px;
-}
-.rank-badge {
-  font-size: 11px;
-  padding: 2px 8px;
-  border-radius: 6px;
-}
-.rank-badge.rank-s { background: #501313; color: #f7c1c1; }
-.rank-badge.rank-a { background: #412402; color: #fac775; }
-.rank-badge.rank-b { background: #2c2c2a; color: #b4b2a9; }
-.sub {
-  font-size: 12px;
-  color: #888;
-  margin: 0 0 8px;
-}
-table.info {
-  width: 100%;
-  font-size: 12px;
-  border-collapse: collapse;
-  margin-bottom: 8px;
-}
-table.info td {
-  padding: 2px 0;
-  color: #aaa;
-}
-table.info td.val {
-  text-align: right;
-  color: #eee;
-}
-table.info td.val.positive { color: #97c459; }
-table.info td.val.negative { color: #f09595; }
-.in-section {
-  border-top: 1px solid #2a2a2a;
-  padding-top: 8px;
-}
-.in-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 6px;
-  font-size: 12px;
-  color: #aaa;
-}
-.in-badge {
-  font-size: 11px;
-  font-weight: 500;
-  padding: 2px 8px;
-  border-radius: 6px;
-}
-.in-badge.in-ok { background: #173404; color: #97c459; }
-.in-badge.in-wait { background: #2c2c2a; color: #b4b2a9; }
-.in-badge.in-ng { background: #2c2c2a; color: #5f5e5a; }
-.empty {
-  color: #888;
-  font-size: 13px;
-  grid-column: 1 / -1;
-}
-</style>
-</head>
-<body>
-<div class="nav">
-  <a href="index.html">神話 司令塔</a>
-  <a href="marketchart.html">地合いチャート</a>
-  <a href="in-judge.html">執行判定（現在のページ）</a>
+body{font-family:-apple-system,sans-serif;background:#0d0d0d;color:#eee;margin:0;padding:16px;}
+.head{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.htitle{font-size:19px;font-weight:700;}
+.back{font-size:11px;font-weight:700;color:#fff;background:#378add;border-radius:14px;
+      padding:5px 11px;text-decoration:none;margin-left:auto;}
+.sub{color:#999;font-size:12px;margin-bottom:14px;}
+.mocknote{color:#fbbf24;font-size:11px;}
+.panel{background:#141414;border:1px solid #2a2a2a;border-radius:10px;padding:12px 14px;}
+.ptitle{font-size:15px;font-weight:700;color:#e6a8d8;margin-bottom:10px;}
+.ptitle .pnote{font-size:10px;font-weight:400;color:#888;margin-left:6px;}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+table{border-collapse:collapse;width:100%;font-size:12px;min-width:820px;}
+th,td{padding:6px 8px;border-bottom:1px solid #2a2a2a;white-space:nowrap;}
+th{background:#1a1a1a;color:#bbb;font-size:10px;}
+th:first-child,td:first-child{text-align:left;}
+.tk{font-weight:700;}
+.nm{color:#999;}
+</style></head><body>
+<div class="head"><span class="htitle">⚡ 執行判定（IN判断）</span>
+<a class="back" href="index.html">🧭 司令塔に戻る</a></div>
+<div class="sub">更新 08/18 00:50 JST（発掘_候補.json抽出時刻：2026-08-18 00:01）／5分おき更新想定</div>
+<div class="panel">
+<div class="ptitle">IN判断（絶対基準4条件） <span class="pnote">対象4件／IN可能0・待機2・除外2</span></div>
+<div class="scroll"><table>
+<tr><th>銘柄</th><th>銘柄名</th><th style="text-align:right;">現在価格</th>
+<th style="text-align:right;">VWAP</th><th style="text-align:center;">VWAP上</th>
+<th style="text-align:right;">出来高倍率</th><th style="text-align:right;">エントリー下</th>
+<th style="text-align:right;">利確目安</th><th style="text-align:right;">損切り</th>
+<th style="text-align:center;">最終判断</th></tr>
+<tr>
+<td class="tk">CBRS</td>
+<td class="nm">Cerebras Systems</td>
+<td style="text-align:right;">$252.39</td>
+<td style="text-align:right;">$247.67</td>
+<td style="text-align:center;">上</td>
+<td style="text-align:right;color:#e24b4a;font-weight:600;">2.71倍</td>
+<td style="text-align:right;">—</td>
+<td style="text-align:right;">—</td>
+<td style="text-align:right;">—</td>
+<td style="text-align:center;"><span style="color:#9ca3af;background:rgba(156,163,175,.16);padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700;">除外</span></td>
+</tr>
+<tr>
+<td class="tk">AXTI</td>
+<td class="nm">AXT Inc</td>
+<td style="text-align:right;">$92.21</td>
+<td style="text-align:right;">$90.47</td>
+<td style="text-align:center;">上</td>
+<td style="text-align:right;color:#e24b4a;font-weight:600;">1.97倍</td>
+<td style="text-align:right;">93.48</td>
+<td style="text-align:right;">102.83</td>
+<td style="text-align:right;">90.47</td>
+<td style="text-align:center;"><span style="color:#fbbf24;background:rgba(251,191,36,.18);padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700;">待機</span></td>
+</tr>
+<tr>
+<td class="tk">CRDO</td>
+<td class="nm">Credo Technology</td>
+<td style="text-align:right;">$281.14</td>
+<td style="text-align:right;">$276.47</td>
+<td style="text-align:center;">上</td>
+<td style="text-align:right;color:#e24b4a;font-weight:600;">1.98倍</td>
+<td style="text-align:right;">285.8</td>
+<td style="text-align:right;">314.38</td>
+<td style="text-align:right;">276.47</td>
+<td style="text-align:center;"><span style="color:#fbbf24;background:rgba(251,191,36,.18);padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700;">待機</span></td>
+</tr>
+<tr>
+<td class="tk">AMKR</td>
+<td class="nm">Amkor Technology</td>
+<td style="text-align:right;">$61.4</td>
+<td style="text-align:right;">$61.31</td>
+<td style="text-align:center;">上</td>
+<td style="text-align:right;color:#e24b4a;font-weight:600;">1.33倍</td>
+<td style="text-align:right;">—</td>
+<td style="text-align:right;">—</td>
+<td style="text-align:right;">—</td>
+<td style="text-align:center;"><span style="color:#9ca3af;background:rgba(156,163,175,.16);padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700;">除外</span></td>
+</tr>
+</table></div>
 </div>
-<div class="header">
-  <h1>神話 執行判定（IN判断）</h1>
-  <span class="updated">最終更新: 2026-08-17 12:48</span>
-</div>
-<div class="grid">
-<p class="empty">現在、条件を満たす候補はありません（発掘バッチは正常稼働中）</p>
-</div>
-</body>
-</html>
+</body></html>
